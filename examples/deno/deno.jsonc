@@ -1,7 +1,7 @@
 {
   "tasks": {
-    "dev": "deno run --import-map=import_map.json --node-modules-dir --allow-net --watch main.ts",
-    "start": "deno run --import-map=import_map.json --node-modules-dir --allow-net main.ts",
+    "dev": "deno run --import-map=import_map.json --node-modules-dir --allow-net --allow-env --watch main.ts",
+    "start": "deno run --import-map=import_map.json --node-modules-dir --allow-net --allow-env main.ts",
     "transpile": "npm run elysia-polyfills"
   }
 }

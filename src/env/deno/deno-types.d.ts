@@ -19,4 +19,7 @@ declare namespace Deno {
 const Deno: {
   listen(options: { port: number; hostname: string }): Deno.Server;
   serveHttp(connection: Deno.Conn): Deno.HTTPConn;
+  env: {
+    get(name: string): string | undefined;
+  };
 };

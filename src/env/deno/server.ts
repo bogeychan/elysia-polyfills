@@ -15,12 +15,16 @@ const ElysiaBun: TElysiaBun = {
 
     const denoServer = Deno.listen({ hostname, port });
 
+    if (typeof options.development === 'undefined') {
+      options.development = Deno.env.get('NODE_ENV') !== 'production';
+    }
+
     const server: TElysiaServer = {
       port,
       hostname,
+      development: options.development,
       pendingRequests: 0,
       pendingWebSockets: 0,
-      development: options.development ?? process.env.NODE_ENV !== 'production',
       fetch(request) {
         // @ts-ignore
         return options.fetch.call(server, request, server) as ReturnType<
