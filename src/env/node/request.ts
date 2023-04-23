@@ -30,6 +30,8 @@ export async function request<T>(
             break;
           default:
             init.body = stream;
+            // @ts-ignore
+            init.duplex = 'half';
             break;
         }
 
@@ -44,3 +46,4 @@ export async function request<T>(
     });
   });
 }
+

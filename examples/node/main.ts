@@ -2,10 +2,15 @@ import '@bogeychan/elysia-polyfills/node/index.js';
 
 import { Elysia } from 'elysia';
 
-const app = new Elysia()
-  .get('/', () => {
-    return { hello: 'Node.js👋' };
-  })
-  .listen(8080);
+new Elysia()
+  .get('/', () => 'Hi')
+  .post('/json', (ctx) => ctx.body)
+  .get('/id/:id', (ctx) => {
+    ctx.set.headers['x-powered-by'] = 'benchmark';
 
-console.log(`Listening on http://localhost:${app.server!.port}`);
+    return `${ctx.params.id} ${ctx.query.name}`;
+  })
+  .listen(3000);
+
+// console.log(`Listening on http://localhost:${app.server!.port}`);
+
