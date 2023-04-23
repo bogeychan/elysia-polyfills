@@ -3,11 +3,11 @@
 Collection of experimental [Elysia.js](https://elysiajs.com) polyfills:
 
 | Package        | [Node.js](https://nodejs.org) (v18.16.0) | [Deno](https://deno.land) (1.32.5) |
-|----------------|------------------------------------------|------------------------------------|
-| elysia (0.4.9) | 🔬                                        | 🔬                                  |
+| -------------- | ---------------------------------------- | ---------------------------------- |
+| elysia (0.4.9) | 🔬                                       | 🔬                                 |
 | ...            | ...                                      | ...                                |
 
-**_~Legend~_**
+**_Legend_**
 
 🔬 - Under testing
 
@@ -34,8 +34,7 @@ import '@bogeychan/elysia-polyfills/node/index.js';
 
 import { Elysia } from 'elysia';
 
-
-new Elysia().get('/', () => ({ "hello": 'Node.js👋' })).listen(8080);
+new Elysia().get('/', () => ({ hello: 'Node.js👋' })).listen(8080);
 ```
 
 ### Deno
@@ -44,7 +43,6 @@ new Elysia().get('/', () => ({ "hello": 'Node.js👋' })).listen(8080);
 import 'npm:@bogeychan/elysia-polyfills/deno/index.js';
 
 import { Elysia } from 'npm:elysia';
-
 
 new Elysia().get('/', () => ({ hello: 'Deno👋' })).listen(8080);
 ```
