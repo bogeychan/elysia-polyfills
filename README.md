@@ -2,10 +2,10 @@
 
 Collection of experimental [Elysia.js](https://elysiajs.com) polyfills:
 
-| Package        | [Node.js](https://nodejs.org) (v18.16.0) | [Deno](https://deno.land) (1.32.5) |
-| -------------- | ---------------------------------------- | ---------------------------------- |
-| elysia (0.4.9) | 🔬                                       | 🔬                                 |
-| ...            | ...                                      | ...                                |
+| Package                                            | [Node.js](https://nodejs.org) (v18.16.0) | [Deno](https://deno.land) (1.32.5) |
+| -------------------------------------------------- | ---------------------------------------- | ---------------------------------- |
+| [elysia](https://npmjs.com/package/elysia) (0.4.9) | 🔬                                       | 🔬                                 |
+| ...                                                | ...                                      | ...                                |
 
 **_Legend_**
 
