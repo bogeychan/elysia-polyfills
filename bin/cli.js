@@ -9,7 +9,6 @@ const CWD = process.cwd();
 const NODE_MODULES_PATH = path.resolve(CWD, 'node_modules');
 const ELYSIA_PATH = path.resolve(NODE_MODULES_PATH, 'elysia');
 const RAIKIRI_PATH = path.resolve(NODE_MODULES_PATH, 'raikiri');
-const TARGET_FILE_EXTENSION = '.js';
 
 /**
  * @param {string} filename
