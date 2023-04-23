@@ -1,0 +1,7 @@
+{
+    "imports": {
+        "@bogeychan/elysia-polyfills/deno/index.js": "../../dist/env/deno/index.js",
+        "elysia": "npm:elysia@0.4.9",
+        "@sinclair/typebox": "npm:@sinclair/typebox@0.26.0"
+    }
+}

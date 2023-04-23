@@ -1,0 +1,6 @@
+.DS_Store
+.env
+NOTES.txt
+
+dist/
+node_modules/

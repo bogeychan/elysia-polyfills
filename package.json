@@ -1,0 +1,57 @@
+{
+  "name": "@bogeychan/elysia-polyfills",
+  "version": "0.0.1",
+  "description": "Collection of experimental Elysia.js polyfills",
+  "author": {
+    "name": "bogeychan",
+    "url": "https://github.com/bogeychan",
+    "email": "bogeychan@outlook.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bogeychan/elysia-polyfills"
+  },
+  "type": "module",
+  "bin": {
+    "elysia-polyfills": "./bin/cli.js"
+  },
+  "scripts": {
+    "build": "rm -fr dist && tsc && node ./scripts/build.js"
+  },
+  "exports": {
+    "./node/index.js": {
+      "import": "./dist/env/node/index.js",
+      "default": "./dist/env/node/index.js",
+      "node": "./dist/env/node/index.js"
+    },
+    "./deno/index.js": {
+      "import": "./dist/env/node/index.js",
+      "default": "./dist/env/node/index.js",
+      "node": "./dist/env/node/index.js"
+    }
+  },
+  "peerDependencies": {
+    "elysia": ">= 0.4.9"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.13",
+    "bun-types": "^0.5.8",
+    "elysia": "^0.4.9"
+  },
+  "dependencies": {
+    "acorn": "^8.8.2",
+    "acorn-walk": "^8.2.0",
+    "astring": "^1.8.4",
+    "glob": "^10.2.1",
+    "typescript": "^5.0.4"
+  },
+  "homepage": "https://github.com/bogeychan/elysia-polyfills",
+  "bugs": "https://github.com/bogeychan/elysia-polyfills/issues",
+  "license": "MIT",
+  "keywords": [
+    "elysia",
+    "polyfills",
+    "deno",
+    "node"
+  ]
+}

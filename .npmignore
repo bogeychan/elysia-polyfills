@@ -1,0 +1,10 @@
+.git
+.gitignore
+.env
+NOTES.txt
+
+node_modules
+
+examples
+tests
+CHANGELOG.md
