@@ -1,3 +1,13 @@
+# 0.0.4 - 24 Apr 2023
+
+Feature:
+
+- cli transpile additional packages
+
+Improvement:
+
+- `Node.js` example & tests for `@elysiajs/cors`, `@elysiajs/html`
+
 # 0.0.3 - 24 Apr 2023
 
 Improvement:
