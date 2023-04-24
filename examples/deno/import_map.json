@@ -5,6 +5,8 @@
         "@sinclair/typebox": "npm:@sinclair/typebox@0.26.0",
         "@elysiajs/cors": "npm:@elysiajs/cors@0.3.0",
         "@elysiajs/html": "npm:@elysiajs/html@0.1.0",
+        "@elysiajs/bearer": "npm:@elysiajs/bearer@0.3.0",
+        "@elysiajs/cookie": "npm:@elysiajs/cookie@0.3.0",
         "chai": "npm:chai"
     }
 }

@@ -2,12 +2,14 @@
 
 Collection of experimental [Elysia.js](https://elysiajs.com) polyfills:
 
-| Package                                            | [Node.js](https://nodejs.org) (v18.16.0) | [Deno](https://deno.land) (1.32.5) |
-| -------------------------------------------------- | ---------------------------------------- | ---------------------------------- |
-| [elysia](https://npmjs.com/package/elysia) (0.4.9) | 🔬                                       | 🔬                                 |
-| [@elysiajs/cors](https://www.npmjs.com/package/@elysiajs/cors) (0.3.0)                                                | ✅                                      | ✅                                |
-| [@elysiajs/html](https://www.npmjs.com/package/@elysiajs/html) (0.1.0)                                               | ✅                                      | ✅                                |
-| ...                                                | ...                                      | ...                                |
+| Package                                                                    | [Node.js](https://nodejs.org) (v18.16.0)      | [Deno](https://deno.land) (1.32.5) |
+| -------------------------------------------------------------------------- | --------------------------------------------- | ---------------------------------- |
+| [elysia](https://npmjs.com/package/elysia) (0.4.9)                         | 🔬                                            | 🔬                                 |
+| [@elysiajs/cors](https://www.npmjs.com/package/@elysiajs/cors) (0.3.0)     | ✅                                            | ✅                                 |
+| [@elysiajs/html](https://www.npmjs.com/package/@elysiajs/html) (0.1.0)     | ✅                                            | ✅                                 |
+| [@elysiajs/bearer](https://www.npmjs.com/package/@elysiajs/bearer) (0.3.0) | ✅                                            | ✅                                 |
+| [@elysiajs/cookie](https://www.npmjs.com/package/@elysiajs/cookie) (0.3.0) | ⚠️ (doesn't support setting multiple cookies) | ✅                                 |
+| ...                                                                        | ...                                           | ...                                |
 
 **_Legend_**
 
@@ -29,7 +31,7 @@ yarn add @bogeychan/elysia-polyfills
 
 Checkout the [examples](./examples) folder on Github and follow its setup guide.
 
-__**OR**__ use an [Elysia.js scaffold](https://www.npmjs.com/package/create-elysia).
+**_OR_** use an [Elysia.js scaffold](https://www.npmjs.com/package/create-elysia).
 
 ### Node.js
 
@@ -42,6 +44,7 @@ new Elysia().get('/', () => ({ hello: 'Node.js👋' })).listen(8080);
 ```
 
 Create a new `Node.js` project:
+
 ```bash
 npm create elysia@latest my-elysia-app --template node-ts
 ```
@@ -57,6 +60,7 @@ new Elysia().get('/', () => ({ hello: 'Deno👋' })).listen(8080);
 ```
 
 Create a new `Deno` project:
+
 ```bash
 deno run -r=npm:create-elysia --allow-read --allow-write npm:create-elysia my-elysia-app --template deno
 ```
@@ -68,3 +72,4 @@ deno run -r=npm:create-elysia --allow-read --allow-write npm:create-elysia my-el
 ## License
 
 [MIT](LICENSE)
+

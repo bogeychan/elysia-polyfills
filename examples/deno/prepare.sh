@@ -9,5 +9,5 @@ echo "Downloading..."
 deno task start &> /dev/null
 
 # Transpile a few `node_modules` packages to conform ESM
-../../bin/cli.js "@elysiajs/cors" "@elysiajs/html"
+../../bin/cli.js "@elysiajs/cors" "@elysiajs/html" "@elysiajs/bearer" "@elysiajs/cookie"
 # ./node_modules/@bogeychan/elysia-polyfills/bin/cli.js "@elysiajs/cors" "@elysiajs/html"
