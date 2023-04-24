@@ -34,6 +34,7 @@
     "elysia": ">= 0.4.9"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.4",
     "@types/node": "^18.15.13",
     "bun-types": "^0.5.8",
     "elysia": "^0.4.9"

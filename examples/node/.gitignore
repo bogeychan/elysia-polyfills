@@ -2,4 +2,5 @@
 .env
 package-lock.json
 
+tests/
 node_modules/

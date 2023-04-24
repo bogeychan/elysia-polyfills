@@ -4,7 +4,7 @@
   "scripts": {
     "start": "ts-node --esm ./main.ts",
     "transpile": "elysia-polyfills @elysiajs/cors @elysiajs/html",
-    "test": "ts-node --esm ./test.ts"
+    "test": "rm -fr ./tests && cp -r ../../tests ./tests && ts-node --esm ./test.ts"
   },
   "devDependencies": {
     "@elysiajs/cors": "^0.3.0",

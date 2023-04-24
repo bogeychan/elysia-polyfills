@@ -2,4 +2,5 @@
 .env
 deno.lock
 
+tests/
 node_modules/

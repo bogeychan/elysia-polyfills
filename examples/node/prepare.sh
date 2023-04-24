@@ -3,6 +3,8 @@
 # Cleanup
 rm -fr node_modules package-lock.json
 
+echo "Downloading..."
+
 # Install dependencies
 npm install
 
