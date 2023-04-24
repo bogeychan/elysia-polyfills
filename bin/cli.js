@@ -10,6 +10,10 @@ const NODE_MODULES_PATH = path.resolve(CWD, 'node_modules');
 const ELYSIA_PATH = path.resolve(NODE_MODULES_PATH, 'elysia');
 const RAIKIRI_PATH = path.resolve(NODE_MODULES_PATH, 'raikiri');
 
+const EXTRA_PATHS = process.argv
+  .slice(2)
+  .map((extraPath) => path.resolve(NODE_MODULES_PATH, extraPath));
+
 /**
  * @param {string} filename
  */
@@ -48,9 +52,17 @@ function modifyPackageJson(folderPath) {
 modifyPackageJson(ELYSIA_PATH);
 modifyPackageJson(RAIKIRI_PATH);
 
+for (const extraPath of EXTRA_PATHS) {
+  modifyPackageJson(extraPath);
+}
+
 console.log('\n');
 updateScriptFolder(path.resolve(ELYSIA_PATH, 'dist'));
 updateScriptFolder(path.resolve(RAIKIRI_PATH, 'dist'));
+
+for (const extraPath of EXTRA_PATHS) {
+  updateScriptFolder(path.resolve(extraPath, 'dist'));
+}
 
 console.log('\ndone.');
 process.exit(0);
