@@ -1,3 +1,10 @@
+# 0.0.5 - 24 Apr 2023
+
+Improvement:
+
+- add `Deno` tests for `cors` & `html`
+- move `typescript` to `devDependencies`
+
 # 0.0.4 - 24 Apr 2023
 
 Feature:
