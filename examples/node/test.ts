@@ -1,4 +1,4 @@
-// import '@bogeychan/elysia-polyfills/node/index.js';
+import '@bogeychan/elysia-polyfills/node/index.js';
 
 import { Elysia } from 'elysia';
 import { assert } from 'chai';
