@@ -5,6 +5,8 @@ Collection of experimental [Elysia.js](https://elysiajs.com) polyfills:
 | Package                                            | [Node.js](https://nodejs.org) (v18.16.0) | [Deno](https://deno.land) (1.32.5) |
 | -------------------------------------------------- | ---------------------------------------- | ---------------------------------- |
 | [elysia](https://npmjs.com/package/elysia) (0.4.9) | 🔬                                       | 🔬                                 |
+| [@elysiajs/cors](https://www.npmjs.com/package/@elysiajs/cors) (0.3.0)                                                | ✅                                      | 🔬                                |
+| [@elysiajs/html](https://www.npmjs.com/package/@elysiajs/html) (0.1.0)                                               | ✅                                      | 🔬                                |
 | ...                                                | ...                                      | ...                                |
 
 **_Legend_**

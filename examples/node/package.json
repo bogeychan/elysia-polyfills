@@ -3,15 +3,20 @@
   "type": "module",
   "scripts": {
     "start": "ts-node --esm ./main.ts",
-    "transpile": "elysia-polyfills"
+    "transpile": "elysia-polyfills @elysiajs/cors @elysiajs/html",
+    "test": "ts-node --esm ./test.ts"
   },
   "devDependencies": {
+    "@elysiajs/cors": "^0.3.0",
+    "@elysiajs/html": "^0.1.0",
+    "@types/chai": "^4.3.4",
+    "@types/node": "^18.15.13",
+    "chai": "^4.3.7",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.4",
-    "@types/node": "^18.15.13"
+    "typescript": "^5.0.4"
   },
   "dependencies": {
-    "elysia": "^0.4.9",
-    "@bogeychan/elysia-polyfills": "../.."
+    "@bogeychan/elysia-polyfills": "../..",
+    "elysia": "^0.4.9"
   }
 }
