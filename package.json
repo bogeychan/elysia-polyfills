@@ -37,14 +37,14 @@
     "@types/chai": "^4.3.4",
     "@types/node": "^18.15.13",
     "bun-types": "^0.5.8",
-    "elysia": "^0.4.9"
+    "elysia": "^0.4.9",
+    "typescript": "^5.0.4"
   },
   "dependencies": {
     "acorn": "^8.8.2",
     "acorn-walk": "^8.2.0",
     "astring": "^1.8.4",
-    "glob": "^10.2.1",
-    "typescript": "^5.0.4"
+    "glob": "^10.2.1"
   },
   "homepage": "https://github.com/bogeychan/elysia-polyfills",
   "bugs": "https://github.com/bogeychan/elysia-polyfills/issues",
