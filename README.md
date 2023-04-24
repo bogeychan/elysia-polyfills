@@ -29,6 +29,8 @@ yarn add @bogeychan/elysia-polyfills
 
 Checkout the [examples](./examples) folder on Github and follow its setup guide.
 
+__**OR**__ use an [Elysia.js scaffold](https://www.npmjs.com/package/create-elysia).
+
 ### Node.js
 
 ```ts
@@ -39,6 +41,11 @@ import { Elysia } from 'elysia';
 new Elysia().get('/', () => ({ hello: 'Node.js👋' })).listen(8080);
 ```
 
+Create a new `Node.js` project:
+```bash
+npm create elysia@latest my-elysia-app node-ts
+```
+
 ### Deno
 
 ```ts
@@ -47,6 +54,11 @@ import 'npm:@bogeychan/elysia-polyfills/deno/index.js';
 import { Elysia } from 'npm:elysia';
 
 new Elysia().get('/', () => ({ hello: 'Deno👋' })).listen(8080);
+```
+
+Create a new `Deno` project:
+```bash
+deno run -r=npm:create-elysia --allow-read --allow-write npm:create-elysia my-elysia-app deno
 ```
 
 ## Author
