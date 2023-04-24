@@ -43,7 +43,7 @@ new Elysia().get('/', () => ({ hello: 'Node.js👋' })).listen(8080);
 
 Create a new `Node.js` project:
 ```bash
-npm create elysia@latest my-elysia-app node-ts
+npm create elysia@latest my-elysia-app --template node-ts
 ```
 
 ### Deno
@@ -58,7 +58,7 @@ new Elysia().get('/', () => ({ hello: 'Deno👋' })).listen(8080);
 
 Create a new `Deno` project:
 ```bash
-deno run -r=npm:create-elysia --allow-read --allow-write npm:create-elysia my-elysia-app deno
+deno run -r=npm:create-elysia --allow-read --allow-write npm:create-elysia my-elysia-app --template deno
 ```
 
 ## Author
