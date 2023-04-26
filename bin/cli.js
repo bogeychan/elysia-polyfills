@@ -15,23 +15,27 @@ const EXTRA_PATHS = process.argv
   .map((extraPath) => path.resolve(NODE_MODULES_PATH, extraPath));
 
 /**
- * @param {string} filename
+ * @param {string} filePath
  */
-function exitOnMissingFile(filename) {
-  console.error(`❌ "${CWD}" doesn't contain '${filename}'`);
+function exitOnMissingFile(filePath) {
+  console.error(
+    `❌ "${path.dirname(filePath)}" doesn't contain '${path.basename(
+      filePath
+    )}'`
+  );
   process.exit(1);
 }
 
 if (!fs.existsSync(NODE_MODULES_PATH)) {
-  exitOnMissingFile('node_modules');
+  exitOnMissingFile(NODE_MODULES_PATH);
 }
 
 if (!fs.existsSync(ELYSIA_PATH)) {
-  exitOnMissingFile('elysia');
+  exitOnMissingFile(ELYSIA_PATH);
 }
 
 if (!fs.existsSync(RAIKIRI_PATH)) {
-  exitOnMissingFile('raikiri');
+  exitOnMissingFile(RAIKIRI_PATH);
 }
 
 console.log("Let's goo\n");
@@ -67,3 +71,4 @@ for (const extraPath of EXTRA_PATHS) {
 
 console.log('\ndone.');
 process.exit(0);
+
