@@ -1,3 +1,5 @@
 import '@bogeychan/elysia-polyfills/deno/index.js';
 
-import './tests/index.ts';
+import { runTests } from './tests/index.ts';
+
+runTests('deno');

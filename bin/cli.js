@@ -38,6 +38,7 @@ console.log("Let's goo\n");
 
 /**
  * @param {string} folderPath
+ * @see https://github.com/denoland/deno/issues/17784#issuecomment-1445195226
  */
 function modifyPackageJson(folderPath) {
   const filePath = path.resolve(folderPath, 'package.json');

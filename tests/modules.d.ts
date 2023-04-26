@@ -13,3 +13,7 @@ declare module '@elysiajs/bearer' {
 declare module '@elysiajs/cookie' {
   function cookie(...agrs: any[]): any;
 }
+
+declare module '@elysiajs/swagger' {
+  function swagger(...args: any[]): any;
+}

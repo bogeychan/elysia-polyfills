@@ -1,7 +1,19 @@
 {
   "tasks": {
-    "dev": "deno run --import-map=import_map.json --node-modules-dir --allow-net --allow-env --watch main.ts",
-    "start": "deno run --import-map=import_map.json --node-modules-dir --allow-net --allow-env main.ts",
-    "test": "rm -fr ./tests && cp -r ../../tests ./tests && deno run --import-map=import_map.json --node-modules-dir ./test.ts"
+    "dev": "deno run --node-modules-dir --allow-net --allow-env --watch main.ts",
+    "start": "deno run --node-modules-dir --allow-net --allow-env main.ts",
+    "test": "rm -fr ./tests && cp -r ../../tests ./tests && deno run --no-check --node-modules-dir ./test.ts"
+  },
+  "imports": {
+    "@bogeychan/elysia-polyfills/deno/index.js": "../../dist/env/deno/index.js",
+    "elysia": "npm:elysia@0.4.9",
+    // --- test dependencies
+    "@sinclair/typebox": "npm:@sinclair/typebox@0.26.0",
+    "@elysiajs/cors": "npm:@elysiajs/cors@0.3.0",
+    "@elysiajs/html": "npm:@elysiajs/html@0.1.0",
+    "@elysiajs/bearer": "npm:@elysiajs/bearer@0.3.0",
+    "@elysiajs/cookie": "npm:@elysiajs/cookie@0.3.0",
+    "chai": "npm:chai"
+    // --- test dependencies
   }
 }
