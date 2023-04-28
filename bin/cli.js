@@ -9,6 +9,7 @@ const CWD = process.cwd();
 const NODE_MODULES_PATH = path.resolve(CWD, 'node_modules');
 const ELYSIA_PATH = path.resolve(NODE_MODULES_PATH, 'elysia');
 const RAIKIRI_PATH = path.resolve(NODE_MODULES_PATH, 'raikiri');
+const DENO_NESTED_MODULES_PATH = path.resolve(NODE_MODULES_PATH, '.deno');
 
 const EXTRA_PATHS = process.argv
   .slice(2)
@@ -30,13 +31,42 @@ if (!fs.existsSync(NODE_MODULES_PATH)) {
   exitOnMissingFile(NODE_MODULES_PATH);
 }
 
-if (!fs.existsSync(ELYSIA_PATH)) {
-  exitOnMissingFile(ELYSIA_PATH);
+/**
+ * @type {string[]}
+ */
+let denoModules = [];
+
+if (fs.existsSync(DENO_NESTED_MODULES_PATH)) {
+  denoModules = fs.readdirSync(DENO_NESTED_MODULES_PATH);
 }
 
-if (!fs.existsSync(RAIKIRI_PATH)) {
-  exitOnMissingFile(RAIKIRI_PATH);
+/**
+ * @param {string} folderPath
+ * @returns {string}
+ */
+function resolveFolderPath(folderPath) {
+  if (!fs.existsSync(folderPath)) {
+    const folderName = path.basename(folderPath);
+
+    for (const moduleName of denoModules) {
+      if (moduleName.startsWith(`${folderName}@`)) {
+        return path.resolve(
+          DENO_NESTED_MODULES_PATH,
+          moduleName,
+          'node_modules',
+          folderName
+        );
+      }
+    }
+
+    exitOnMissingFile(folderPath);
+  }
+
+  return folderPath;
 }
+
+const elysiaPath = resolveFolderPath(ELYSIA_PATH);
+const raikiriPath = resolveFolderPath(RAIKIRI_PATH);
 
 console.log("Let's goo\n");
 
@@ -54,18 +84,20 @@ function modifyPackageJson(folderPath) {
   console.log(`✅ Updated package for "${filePath}"`);
 }
 
-modifyPackageJson(ELYSIA_PATH);
-modifyPackageJson(RAIKIRI_PATH);
+modifyPackageJson(elysiaPath);
+modifyPackageJson(raikiriPath);
 
-for (const extraPath of EXTRA_PATHS) {
+const extraPaths = EXTRA_PATHS.map((extraPath) => resolveFolderPath(extraPath));
+
+for (const extraPath of extraPaths) {
   modifyPackageJson(extraPath);
 }
 
 console.log('\n');
-updateScriptFolder(path.resolve(ELYSIA_PATH, 'dist'));
-updateScriptFolder(path.resolve(RAIKIRI_PATH, 'dist'));
+updateScriptFolder(path.resolve(elysiaPath, 'dist'));
+updateScriptFolder(path.resolve(raikiriPath, 'dist'));
 
-for (const extraPath of EXTRA_PATHS) {
+for (const extraPath of extraPaths) {
   updateScriptFolder(path.resolve(extraPath, 'dist'));
 }
 

@@ -2,15 +2,15 @@
 
 Collection of experimental [Elysia.js](https://elysiajs.com) polyfills:
 
-| Package                                                                      | [Node.js](https://nodejs.org) (v18.16.0)      | [Deno](https://deno.land) (1.32.5) |
-| ---------------------------------------------------------------------------- | --------------------------------------------- | ---------------------------------- |
-| [elysia](https://npmjs.com/package/elysia) (0.4.9)                           | 🔬                                            | 🔬                                 |
-| [@elysiajs/cors](https://www.npmjs.com/package/@elysiajs/cors) (0.3.0)       | ✅                                            | ✅                                 |
-| [@elysiajs/html](https://www.npmjs.com/package/@elysiajs/html) (0.1.0)       | ✅                                            | ✅                                 |
-| [@elysiajs/bearer](https://www.npmjs.com/package/@elysiajs/bearer) (0.3.0)   | ✅                                            | ✅                                 |
-| [@elysiajs/cookie](https://www.npmjs.com/package/@elysiajs/cookie) (0.3.0)   | ⚠️ (doesn't support setting multiple cookies) | ✅                                 |
-| [@elysiajs/swagger](https://www.npmjs.com/package/@elysiajs/swagger) (0.4.0) | ✅                                            | ❌                                 |
-| ...                                                                          | ...                                           | ...                                |
+| Package                                                                      | [Node.js](https://nodejs.org) (v18.16.0)      | [Deno](https://deno.land) (1.33.1<sup>#1</sup>) |
+| ---------------------------------------------------------------------------- | --------------------------------------------- | ----------------------------------------------- |
+| [elysia](https://npmjs.com/package/elysia) (0.4.9)                           | 🔬                                            | 🔬                                              |
+| [@elysiajs/cors](https://www.npmjs.com/package/@elysiajs/cors) (0.3.0)       | ✅                                            | ✅                                              |
+| [@elysiajs/html](https://www.npmjs.com/package/@elysiajs/html) (0.1.0)       | ✅                                            | ✅                                              |
+| [@elysiajs/bearer](https://www.npmjs.com/package/@elysiajs/bearer) (0.3.0)   | ✅                                            | ✅                                              |
+| [@elysiajs/cookie](https://www.npmjs.com/package/@elysiajs/cookie) (0.3.0)   | ⚠️ (doesn't support setting multiple cookies) | ✅                                              |
+| [@elysiajs/swagger](https://www.npmjs.com/package/@elysiajs/swagger) (0.4.0) | ✅                                            | ❌                                              |
+| ...                                                                          | ...                                           | ...                                             |
 
 **_Legend_**
 
@@ -21,6 +21,10 @@ Collection of experimental [Elysia.js](https://elysiajs.com) polyfills:
 ⚠️ - Partial supported
 
 ❌ - Unsupported
+
+## 🚩Notes
+
+<sup>#1</sup> With release [1.33.0](https://github.com/denoland/deno/releases/tag/v1.33.0), `Deno` introduced a new way to resolve `node_modules` dependencies. You need to update `@bogeychan/elysia-polyfills` to at least version `0.0.6` in order to be compatible.
 
 ## Installation
 
