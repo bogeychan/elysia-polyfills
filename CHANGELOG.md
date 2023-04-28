@@ -1,3 +1,9 @@
+# 0.0.6 - 28 Apr 2023
+
+Bug fix:
+
+- with release [1.33.0](https://github.com/denoland/deno/releases/tag/v1.33.0), `Deno` introduced a new way to resolve `node_modules` dependencies
+
 # 0.0.5 - 24 Apr 2023
 
 Improvement:
