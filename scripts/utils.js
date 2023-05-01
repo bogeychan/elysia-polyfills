@@ -42,7 +42,17 @@ export function updateScript(filePath, fileExtension = '.js') {
 
   fs.writeFileSync(filePath, astring.generate(ast));
 
-  console.log(`✅ Updated import for "${filePath}"`);
+  console.log(`✅ Updated imports for "${filePath}"`);
+}
+
+/**
+ * @param {string[]} folderPaths
+ * @param {string} destinationFolder
+ */
+export function updateScriptFolders(folderPaths, destinationFolder = 'dist') {
+  for (const folderPath of folderPaths) {
+    updateScriptFolder(path.resolve(folderPath, destinationFolder));
+  }
 }
 
 /**
@@ -85,3 +95,4 @@ function ensureUpdateImportNode({ node, fileExtension, folderPath }) {
     node.source.raw = `"${node.source.value}${fileExtension}"`;
   }
 }
+

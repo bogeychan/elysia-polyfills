@@ -3,17 +3,15 @@
 import path from 'path';
 import fs from 'fs';
 
-import { updateScriptFolder } from '../scripts/utils.js';
+import { updateScriptFolders } from '../scripts/utils.js';
 
 const CWD = process.cwd();
 const NODE_MODULES_PATH = path.resolve(CWD, 'node_modules');
-const ELYSIA_PATH = path.resolve(NODE_MODULES_PATH, 'elysia');
-const RAIKIRI_PATH = path.resolve(NODE_MODULES_PATH, 'raikiri');
 const DENO_NESTED_MODULES_PATH = path.resolve(NODE_MODULES_PATH, '.deno');
 
-const EXTRA_PATHS = process.argv
-  .slice(2)
-  .map((extraPath) => path.resolve(NODE_MODULES_PATH, extraPath));
+const ELYSIA_MODULE_NAME = 'elysia';
+const RAIKIRI_MODULE_NAME = 'raikiri';
+const EXTRA_MODULE_NAMES = process.argv.slice(2);
 
 /**
  * @param {string} filePath
@@ -41,64 +39,81 @@ if (fs.existsSync(DENO_NESTED_MODULES_PATH)) {
 }
 
 /**
- * @param {string} folderPath
- * @returns {string}
+ * @param {string} moduleName
+ * @returns {string[]}
  */
-function resolveFolderPath(folderPath) {
-  if (!fs.existsSync(folderPath)) {
-    const folderName = path.basename(folderPath);
+function resolveModulePaths(moduleName) {
+  const paths = [];
 
-    for (const moduleName of denoModules) {
-      if (moduleName.startsWith(`${folderName}@`)) {
-        return path.resolve(
-          DENO_NESTED_MODULES_PATH,
-          moduleName,
-          'node_modules',
-          folderName
-        );
-      }
-    }
+  const nodeModulePath = path.join(NODE_MODULES_PATH, moduleName);
 
-    exitOnMissingFile(folderPath);
+  if (fs.existsSync(nodeModulePath)) {
+    paths.push(nodeModulePath);
   }
 
-  return folderPath;
+  const denoModuleNamePrefix = moduleName.replaceAll('/', '+');
+
+  console.log(denoModuleNamePrefix);
+
+  for (const denoModuleName of denoModules) {
+    if (denoModuleName.startsWith(`${denoModuleNamePrefix}@`)) {
+      const denoModulePath = path.join(
+        DENO_NESTED_MODULES_PATH,
+        denoModuleName,
+        'node_modules',
+        moduleName
+      );
+
+      paths.push(denoModulePath);
+    }
+  }
+
+  if (paths.length === 0) {
+    exitOnMissingFile(nodeModulePath);
+  }
+
+  return paths;
 }
 
-const elysiaPath = resolveFolderPath(ELYSIA_PATH);
-const raikiriPath = resolveFolderPath(RAIKIRI_PATH);
+const elysiaPaths = resolveModulePaths(ELYSIA_MODULE_NAME);
+const raikiriPaths = resolveModulePaths(RAIKIRI_MODULE_NAME);
 
 console.log("Let's goo\n");
 
 /**
- * @param {string} folderPath
+ * @param {string[]} folderPaths
  * @see https://github.com/denoland/deno/issues/17784#issuecomment-1445195226
  */
-function modifyPackageJson(folderPath) {
-  const filePath = path.resolve(folderPath, 'package.json');
-  const json = JSON.parse(fs.readFileSync(filePath, { encoding: 'utf-8' }));
+function modifyPackageJson(folderPaths) {
+  for (const folderPath of folderPaths) {
+    const filePath = path.resolve(folderPath, 'package.json');
+    const json = JSON.parse(fs.readFileSync(filePath, { encoding: 'utf-8' }));
 
-  json['type'] = 'module';
+    json['type'] = 'module';
 
-  fs.writeFileSync(filePath, JSON.stringify(json));
-  console.log(`✅ Updated package for "${filePath}"`);
+    fs.writeFileSync(filePath, JSON.stringify(json));
+    console.log(`✅ Updated package for "${filePath}"`);
+  }
 }
 
-modifyPackageJson(elysiaPath);
-modifyPackageJson(raikiriPath);
+modifyPackageJson(elysiaPaths);
+modifyPackageJson(raikiriPaths);
 
-const extraPaths = EXTRA_PATHS.map((extraPath) => resolveFolderPath(extraPath));
+const extraPaths = EXTRA_MODULE_NAMES.map((extraPath) =>
+  resolveModulePaths(extraPath)
+);
 
 for (const extraPath of extraPaths) {
   modifyPackageJson(extraPath);
 }
 
 console.log('\n');
-updateScriptFolder(path.resolve(elysiaPath, 'dist'));
-updateScriptFolder(path.resolve(raikiriPath, 'dist'));
+
+updateScriptFolders(elysiaPaths);
+updateScriptFolders(raikiriPaths);
 
 for (const extraPath of extraPaths) {
-  updateScriptFolder(path.resolve(extraPath, 'dist'));
+  updateScriptFolders(extraPath);
 }
 
 console.log('\ndone.');
