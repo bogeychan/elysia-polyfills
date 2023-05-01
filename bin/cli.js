@@ -45,15 +45,35 @@ if (fs.existsSync(DENO_NESTED_MODULES_PATH)) {
 function resolveModulePaths(moduleName) {
   const paths = [];
 
+  // Check -> ./node_modules/elysia
   const nodeModulePath = path.join(NODE_MODULES_PATH, moduleName);
 
   if (fs.existsSync(nodeModulePath)) {
     paths.push(nodeModulePath);
   }
 
-  const denoModuleNamePrefix = moduleName.replaceAll('/', '+');
+  /**
+   * @param {string} mainModuleName
+   */
+  function pushNestedNodeModulePath(mainModuleName) {
+    // Check -> ./node_modules/elysia/node_modules/raikiri
+    const nestedNodeModulePath = path.join(
+      NODE_MODULES_PATH,
+      mainModuleName,
+      'node_modules',
+      moduleName
+    );
 
-  console.log(denoModuleNamePrefix);
+    if (fs.existsSync(nestedNodeModulePath)) {
+      paths.push(nestedNodeModulePath);
+    }
+  }
+
+  pushNestedNodeModulePath(ELYSIA_MODULE_NAME);
+  pushNestedNodeModulePath(RAIKIRI_MODULE_NAME);
+
+  // Check -> ./node_modules/.deno/elysia@0.4.9
+  const denoModuleNamePrefix = moduleName.replaceAll('/', '+');
 
   for (const denoModuleName of denoModules) {
     if (denoModuleName.startsWith(`${denoModuleNamePrefix}@`)) {
