@@ -25,7 +25,7 @@ Collection of experimental [Elysia.js](https://elysiajs.com) polyfills:
 
 ## 🚩Notes
 
-<sup>#1</sup> With release [1.33.0](https://github.com/denoland/deno/releases/tag/v1.33.0), `Deno` introduced a new way to resolve `node_modules` dependencies. You need to update `@bogeychan/elysia-polyfills` to at least version `0.0.6` in order to be compatible.
+<sup>#1</sup> With release [1.33.0](https://github.com/denoland/deno/releases/tag/v1.33.0), `Deno` introduced a new way to resolve `node_modules` dependencies. You need to update `@bogeychan/elysia-polyfills` to at least version `0.0.7` in order to be compatible.
 
 ## Installation
 

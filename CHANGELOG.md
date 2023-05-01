@@ -1,3 +1,13 @@
+# 0.0.7 - 01 Mai 2023
+
+Feature:
+
+- support & tests for `@elysiajs/static`
+
+Bug fix:
+
+- nested dependencies with `Deno` & `Node.js`
+
 # 0.0.6 - 28 Apr 2023
 
 Bug fix:
