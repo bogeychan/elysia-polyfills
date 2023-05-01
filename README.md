@@ -10,6 +10,7 @@ Collection of experimental [Elysia.js](https://elysiajs.com) polyfills:
 | [@elysiajs/bearer](https://www.npmjs.com/package/@elysiajs/bearer) (0.3.0)   | ✅                                            | ✅                                              |
 | [@elysiajs/cookie](https://www.npmjs.com/package/@elysiajs/cookie) (0.3.0)   | ⚠️ (doesn't support setting multiple cookies) | ✅                                              |
 | [@elysiajs/swagger](https://www.npmjs.com/package/@elysiajs/swagger) (0.4.0) | ✅                                            | ❌                                              |
+| [@elysiajs/static](https://www.npmjs.com/package/@elysiajs/static) (0.3.2)   | ✅                                            | ✅                                              |
 | ...                                                                          | ...                                           | ...                                             |
 
 **_Legend_**

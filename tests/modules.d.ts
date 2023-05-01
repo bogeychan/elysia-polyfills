@@ -17,3 +17,7 @@ declare module '@elysiajs/cookie' {
 declare module '@elysiajs/swagger' {
   function swagger(...args: any[]): any;
 }
+
+declare module '@elysiajs/static' {
+  function staticPlugin(...args: any[]): any;
+}

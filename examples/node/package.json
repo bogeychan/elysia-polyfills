@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "start": "ts-node --esm ./main.ts",
-    "transpile": "elysia-polyfills @elysiajs/cors @elysiajs/html @elysiajs/bearer @elysiajs/cookie @elysiajs/swagger",
+    "transpile": "elysia-polyfills @elysiajs/cors @elysiajs/html @elysiajs/bearer @elysiajs/cookie @elysiajs/swagger @elysiajs/static",
     "test": "rm -fr ./tests && cp -r ../../tests ./tests && ts-node --esm ./test.ts"
   },
   "devDependencies": {
@@ -11,6 +11,7 @@
     "@elysiajs/cookie": "^0.3.0",
     "@elysiajs/cors": "^0.3.0",
     "@elysiajs/html": "^0.1.0",
+    "@elysiajs/static": "^0.3.2",
     "@elysiajs/swagger": "^0.4.0",
     "@types/chai": "^4.3.4",
     "@types/node": "^18.15.13",

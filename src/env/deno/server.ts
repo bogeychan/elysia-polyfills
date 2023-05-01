@@ -4,6 +4,7 @@ import type {
   TBunServeOptions,
   TBunServer,
   TElysiaBun,
+  TBunFileBlob,
   TElysiaServer
 } from '../../elysia-bun-types';
 
@@ -52,7 +53,11 @@ const ElysiaBun: TElysiaBun = {
 
     return server as TBunServer;
   },
-  gc() {} // noop
+  gc() {}, // noop
+  file(path, options) {
+    const bytes = Deno.readFileSync(path as string);
+    return new Blob([bytes], { type: options?.type }) as TBunFileBlob;
+  }
 };
 
 // @ts-ignore

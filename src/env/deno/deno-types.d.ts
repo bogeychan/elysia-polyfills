@@ -22,4 +22,5 @@ const Deno: {
   env: {
     get(name: string): string | undefined;
   };
+  readFileSync(path: string | URL): Uint8Array; // https://deno.land/api@v1.33.1?s=Deno.readFileSync
 };

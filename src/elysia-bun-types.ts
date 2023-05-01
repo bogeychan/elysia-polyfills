@@ -6,7 +6,7 @@ import type {
   WebSocketServeOptions
 } from 'bun';
 
-type TElysiaBun = Pick<typeof import('bun'), 'serve' | 'gc'>;
+type TElysiaBun = Pick<typeof import('bun'), 'serve' | 'gc' | 'file'>;
 type TElysiaServer = Omit<Server, 'publish' | 'reload' | 'upgrade'>;
 
 type TBunServer = Server;
@@ -16,11 +16,14 @@ type TBunServeOptions<T> =
   | WebSocketServeOptions<T>
   | TLSWebSocketServeOptions<T>;
 type TBunRequest = Request;
+type TBunFileBlob = ReturnType<TElysiaBun['file']>;
 
 export type {
   TElysiaBun,
   TElysiaServer,
   TBunServer,
+  TBunFileBlob,
   TBunServeOptions,
   TBunRequest
 };
+

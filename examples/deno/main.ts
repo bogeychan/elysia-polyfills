@@ -6,6 +6,7 @@ import 'chai'; // test dependency
 import '@elysiajs/html';
 import '@elysiajs/cors';
 import '@elysiajs/bearer';
+import '@elysiajs/static';
 import { cookie } from '@elysiajs/cookie';
 
 // import 'npm:@bogeychan/elysia-polyfills/deno/index.js';

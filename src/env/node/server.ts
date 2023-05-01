@@ -2,12 +2,15 @@
 
 import type {
   TBunServeOptions,
+  TBunFileBlob,
   TBunServer,
   TElysiaBun,
   TElysiaServer
 } from '../../elysia-bun-types';
 
+import fs from 'node:fs';
 import http from 'node:http';
+import { Blob } from 'node:buffer';
 import { request } from './request';
 import { response } from './response';
 import { ensureDefaults } from '../../config';
@@ -75,7 +78,11 @@ const ElysiaBun: TElysiaBun = {
 
     return server as TBunServer;
   },
-  gc() {} // noop
+  gc() {}, // noop
+  file(path, options) {
+    const buffer = fs.readFileSync(path as string);
+    return new Blob([buffer], { type: options?.type }) as TBunFileBlob;
+  }
 };
 
 // @ts-ignore

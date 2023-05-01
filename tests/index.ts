@@ -260,6 +260,166 @@ use(
   }
 );
 
+use(
+  '@elysiajs/static',
+  () => import('@elysiajs/static'),
+  async ({ staticPlugin }) => {
+    const { readFileSync } = await import('node:fs');
+
+    const options = {
+      assets: 'tests'
+    };
+
+    const testFile = readFileSync(`./${options.assets}/TEST.txt`, {
+      encoding: 'utf-8'
+    });
+
+    it('should get root path', async () => {
+      const app = new Elysia().use(staticPlugin(options));
+
+      await app.modules;
+
+      const res = await app
+        .handle(req('/public/TEST.txt'))
+        .then((r) => r.blob())
+        .then((r) => r.text());
+
+      assert.equal(res, testFile);
+    });
+
+    it('should get nested path', async () => {
+      const app = new Elysia().use(staticPlugin(options));
+
+      await app.modules;
+
+      const res = await app.handle(req('/public/nested/TEST.txt'));
+      const blob = await res.blob();
+
+      assert.equal(await blob.text(), testFile);
+    });
+
+    it('should handle prefix', async () => {
+      const app = new Elysia().use(
+        staticPlugin({
+          ...options,
+          prefix: '/static'
+        })
+      );
+
+      await app.modules;
+
+      const res = await app.handle(req('/static/TEST.txt'));
+      const blob = await res.blob();
+
+      assert.equal(await blob.text(), testFile);
+    });
+
+    it('should handle empty prefix', async () => {
+      const app = new Elysia().use(
+        staticPlugin({
+          ...options,
+          prefix: ''
+        })
+      );
+
+      await app.modules;
+
+      const res = await app.handle(req('/TEST.txt'));
+      const blob = await res.blob();
+
+      assert.equal(await blob.text(), testFile);
+    });
+
+    it('should supports multiple public', async () => {
+      const app = new Elysia()
+        .use(
+          staticPlugin({
+            ...options,
+            prefix: options.assets
+          })
+        )
+        .use(
+          staticPlugin({
+            ...options,
+            prefix: '/public'
+          })
+        );
+
+      await app.modules;
+
+      const res = await app.handle(req('/public/TEST.txt'));
+
+      assert.equal(res.status, 200);
+    });
+
+    it('ignore string pattern', async () => {
+      const app = new Elysia().use(
+        staticPlugin({
+          ...options,
+          ignorePatterns: ['tests/TEST.txt']
+        })
+      );
+
+      await app.modules;
+
+      const res = await app.handle(req('tests/TEST.txt'));
+      const blob = await res.blob();
+
+      assert.equal(await blob.text(), 'NOT_FOUND');
+    });
+
+    it('ignore regex pattern', async () => {
+      const app = new Elysia().use(
+        staticPlugin({
+          ...options,
+          ignorePatterns: [/TEST.txt$/]
+        })
+      );
+
+      const file = await app.handle(req('tests/TEST.txt'));
+
+      assert.equal(file.status, 404);
+    });
+
+    it('always static', async () => {
+      const app = new Elysia().use(
+        staticPlugin({
+          ...options,
+          alwaysStatic: true
+        })
+      );
+
+      await app.modules;
+
+      const res = await app
+        .handle(req('/public/TEST.txt'))
+        .then((r) => r.blob())
+        .then((r) => r.text());
+
+      assert.equal(res, testFile);
+    });
+
+    it('exclude extension', async () => {
+      const app = new Elysia().use(
+        staticPlugin({
+          ...options,
+          alwaysStatic: true,
+          noExtension: true
+        })
+      );
+
+      await app.modules;
+
+      const res = await app
+        .handle(req('/public/TEST'))
+        .then((r) => r.blob())
+        .then((r) => r.text());
+
+      assert.equal(res, testFile);
+    });
+  }
+);
+
 // --- TEST UTILS
 
 type TestResult = void | Promise<void>;
@@ -296,8 +456,11 @@ export async function runTests(env: 'node' | 'deno') {
         console.log(`\t✅ ${test.description}`);
       } catch (error) {
         console.error(`\t❌ ${test.description}\n\n`, error);
+
         // @ts-ignore
-        (process ?? Deno).exit(1);
+        const process = 'process' in globalThis ? process : Deno;
+
+        process.exit(1);
       }
     }
   }
@@ -306,7 +469,7 @@ export async function runTests(env: 'node' | 'deno') {
 function use(
   moduleName: string,
   typedImport: () => Promise<any>,
-  callback: (module: any) => void
+  callback: (module: any) => void | Promise<void>
 ) {
   TEST_BLOCKS[moduleName] = {
     moduleName,
@@ -317,7 +480,7 @@ function use(
       //! https://github.com/denoland/deno/issues/15826#issuecomment-1324365924
       // callback(await import(moduleName));
 
-      callback(module);
+      await callback(module);
     },
     tests: []
   };
