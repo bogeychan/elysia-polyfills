@@ -30,9 +30,11 @@ const ElysiaBun: TElysiaBun = {
       development: options.development ?? process.env.NODE_ENV !== 'production',
       fetch(request) {
         const bunServer = server as TBunServer;
-        return options.fetch.call(bunServer, request, bunServer) as ReturnType<
-          TElysiaServer['fetch']
-        >;
+        return options.fetch.call(
+          bunServer,
+          request as Request,
+          bunServer
+        ) as ReturnType<TElysiaServer['fetch']>;
       },
       stop() {} // lazy
     };

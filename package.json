@@ -36,7 +36,7 @@
   "devDependencies": {
     "@types/chai": "^4.3.4",
     "@types/node": "^18.15.13",
-    "bun-types": "^0.5.8",
+    "bun-types": "^0.6.4",
     "elysia": "^0.4.9",
     "typescript": "^5.0.4"
   },
@@ -44,7 +44,8 @@
     "acorn": "^8.8.2",
     "acorn-walk": "^8.2.0",
     "astring": "^1.8.4",
-    "glob": "^10.2.1"
+    "glob": "^10.2.1",
+    "ts-morph": "^18.0.0"
   },
   "homepage": "https://github.com/bogeychan/elysia-polyfills",
   "bugs": "https://github.com/bogeychan/elysia-polyfills/issues",

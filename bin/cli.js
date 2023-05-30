@@ -4,13 +4,14 @@ import path from 'path';
 import fs from 'fs';
 
 import { updateScriptFolders } from '../scripts/utils.js';
+import { updateElysiaRuntime } from '../scripts/runtime.js';
 
 const CWD = process.cwd();
 const NODE_MODULES_PATH = path.resolve(CWD, 'node_modules');
 const DENO_NESTED_MODULES_PATH = path.resolve(NODE_MODULES_PATH, '.deno');
 
 const ELYSIA_MODULE_NAME = 'elysia';
-const RAIKIRI_MODULE_NAME = 'raikiri';
+const MEMOIRIST_MODULE_NAME = 'memoirist';
 const EXTRA_MODULE_NAMES = process.argv.slice(2);
 
 /**
@@ -70,7 +71,7 @@ function resolveModulePaths(moduleName) {
   }
 
   pushNestedNodeModulePath(ELYSIA_MODULE_NAME);
-  pushNestedNodeModulePath(RAIKIRI_MODULE_NAME);
+  pushNestedNodeModulePath(MEMOIRIST_MODULE_NAME);
 
   // Check -> ./node_modules/.deno/elysia@0.4.9
   const denoModuleNamePrefix = moduleName.replaceAll('/', '+');
@@ -96,7 +97,7 @@ function resolveModulePaths(moduleName) {
 }
 
 const elysiaPaths = resolveModulePaths(ELYSIA_MODULE_NAME);
-const raikiriPaths = resolveModulePaths(RAIKIRI_MODULE_NAME);
+const memoiristPaths = resolveModulePaths(MEMOIRIST_MODULE_NAME);
 
 console.log("Let's goo\n");
 
@@ -117,7 +118,7 @@ function modifyPackageJson(folderPaths) {
 }
 
 modifyPackageJson(elysiaPaths);
-modifyPackageJson(raikiriPaths);
+modifyPackageJson(memoiristPaths);
 
 const extraPaths = EXTRA_MODULE_NAMES.map((extraPath) =>
   resolveModulePaths(extraPath)
@@ -130,11 +131,15 @@ for (const extraPath of extraPaths) {
 console.log('\n');
 
 updateScriptFolders(elysiaPaths);
-updateScriptFolders(raikiriPaths);
+updateScriptFolders(memoiristPaths);
 
 for (const extraPath of extraPaths) {
   updateScriptFolders(extraPath);
 }
+
+console.log('\n');
+
+updateElysiaRuntime(elysiaPaths);
 
 console.log('\ndone.');
 process.exit(0);

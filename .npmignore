@@ -1,7 +1,7 @@
 .git
 .gitignore
 .env
-NOTES.txt
+sandbox/
 
 node_modules
 

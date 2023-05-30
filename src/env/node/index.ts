@@ -1,3 +1,4 @@
 /// <reference types="@types/node" />
 
-export * from './server';
+import './server';
+import '../headers';

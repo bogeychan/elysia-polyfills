@@ -8,6 +8,7 @@ import type {
 
 type TElysiaBun = Pick<typeof import('bun'), 'serve' | 'gc' | 'file'>;
 type TElysiaServer = Omit<Server, 'publish' | 'reload' | 'upgrade'>;
+type TBunHeaders = Headers;
 
 type TBunServer = Server;
 type TBunServeOptions<T> =
@@ -24,6 +25,7 @@ export type {
   TBunServer,
   TBunFileBlob,
   TBunServeOptions,
-  TBunRequest
+  TBunRequest,
+  TBunHeaders
 };
 

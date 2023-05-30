@@ -458,7 +458,7 @@ export async function runTests(env: 'node' | 'deno') {
         console.error(`\t❌ ${test.description}\n\n`, error);
 
         // @ts-ignore
-        const process = 'process' in globalThis ? process : Deno;
+        const process = 'process' in globalThis ? globalThis.process : Deno;
 
         process.exit(1);
       }

@@ -2,15 +2,15 @@
 
 Collection of experimental [Elysia.js](https://elysiajs.com) polyfills:
 
-| Package                                                                      | [Node.js](https://nodejs.org) (v18.16.0)      | [Deno](https://deno.land) (1.33.1<sup>#1</sup>) |
+| Package                                                                      | [Node.js](https://nodejs.org) (v18.16.0)      | [Deno](https://deno.land) (1.33.4<sup>#1</sup>) |
 | ---------------------------------------------------------------------------- | --------------------------------------------- | ----------------------------------------------- |
-| [elysia](https://npmjs.com/package/elysia) (0.4.9)                           | 🔬                                            | 🔬                                              |
-| [@elysiajs/cors](https://www.npmjs.com/package/@elysiajs/cors) (0.3.0)       | ✅                                            | ✅                                              |
-| [@elysiajs/html](https://www.npmjs.com/package/@elysiajs/html) (0.1.0)       | ✅                                            | ✅                                              |
-| [@elysiajs/bearer](https://www.npmjs.com/package/@elysiajs/bearer) (0.3.0)   | ✅                                            | ✅                                              |
-| [@elysiajs/cookie](https://www.npmjs.com/package/@elysiajs/cookie) (0.3.0)   | ⚠️ (doesn't support setting multiple cookies) | ✅                                              |
-| [@elysiajs/swagger](https://www.npmjs.com/package/@elysiajs/swagger) (0.4.0) | ✅                                            | ❌                                              |
-| [@elysiajs/static](https://www.npmjs.com/package/@elysiajs/static) (0.3.2)   | ✅                                            | ✅                                              |
+| [elysia](https://npmjs.com/package/elysia) (0.5.9)                           | 🔬                                            | 🔬                                              |
+| [@elysiajs/cors](https://www.npmjs.com/package/@elysiajs/cors) (0.5.0)       | ✅                                            | ✅                                              |
+| [@elysiajs/html](https://www.npmjs.com/package/@elysiajs/html) (0.5.0)       | ✅                                            | ✅                                              |
+| [@elysiajs/bearer](https://www.npmjs.com/package/@elysiajs/bearer) (0.5.0)   | ✅                                            | ✅                                              |
+| [@elysiajs/cookie](https://www.npmjs.com/package/@elysiajs/cookie) (0.5.0)   | ⚠️ (doesn't support setting multiple cookies) | ✅                                              |
+| [@elysiajs/swagger](https://www.npmjs.com/package/@elysiajs/swagger) (0.5.0) | ✅                                            | ❌                                              |
+| [@elysiajs/static](https://www.npmjs.com/package/@elysiajs/static) (0.5.1)   | ✅                                            | ✅                                              |
 | ...                                                                          | ...                                           | ...                                             |
 
 **_Legend_**
