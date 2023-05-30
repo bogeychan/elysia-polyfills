@@ -1,3 +1,9 @@
+# 0.5.0 - 31 Mai 2023
+
+Bug fix:
+
+- updated dependencies including support for `Elysia.js` Version `0.5.9`
+
 # 0.0.7 - 01 Mai 2023
 
 Feature:
