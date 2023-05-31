@@ -4,7 +4,7 @@ Collection of experimental [Elysia.js](https://elysiajs.com) polyfills:
 
 | Package                                                                      | [Node.js](https://nodejs.org) (v18.16.0)      | [Deno](https://deno.land) (1.33.4<sup>#1</sup>) |
 | ---------------------------------------------------------------------------- | --------------------------------------------- | ----------------------------------------------- |
-| [elysia](https://npmjs.com/package/elysia) (0.5.9)                           | 🔬                                            | 🔬                                              |
+| [elysia](https://npmjs.com/package/elysia) (0.5.10)                          | 🔬                                            | 🔬                                              |
 | [@elysiajs/cors](https://www.npmjs.com/package/@elysiajs/cors) (0.5.0)       | ✅                                            | ✅                                              |
 | [@elysiajs/html](https://www.npmjs.com/package/@elysiajs/html) (0.5.0)       | ✅                                            | ✅                                              |
 | [@elysiajs/bearer](https://www.npmjs.com/package/@elysiajs/bearer) (0.5.0)   | ✅                                            | ✅                                              |

@@ -38,11 +38,12 @@ const isFnUse = (keyword, fnLiteral) => {
   // >> INSERT
   fnLiteral = fnLiteral.trimStart();
 
-  const argument = fnLiteral.startsWith('(')
-    ? // (context) => {}
-      fnLiteral.slice(fnLiteral.indexOf('(') + 1, fnLiteral.indexOf(')'))
-    : // context => {}
-      fnLiteral.slice(0, fnLiteral.indexOf('=') - 1);
+  const argument =
+    fnLiteral.startsWith('(') || fnLiteral.startsWith('function')
+      ? // (context) => {}
+        fnLiteral.slice(fnLiteral.indexOf('(') + 1, fnLiteral.indexOf(')'))
+      : // context => {}
+        fnLiteral.slice(0, fnLiteral.indexOf('=') - 1);
   // << INSERT
 
   if (argument === '') return false;
