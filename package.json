@@ -18,6 +18,7 @@
   "scripts": {
     "build": "rm -fr dist && tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && bash fixup"
   },
+  "types": "./dist/modules.d.ts",
   "exports": {
     "./node/index.js": {
       "require": "./dist/cjs/env/node/index.js",
