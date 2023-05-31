@@ -1,3 +1,13 @@
+# 0.5.1 - 31 Mai 2023
+
+Feature:
+
+- CommonJS support
+
+Bug fix:
+
+- elysia runtime function check
+
 # 0.5.0 - 31 Mai 2023
 
 Bug fix:
