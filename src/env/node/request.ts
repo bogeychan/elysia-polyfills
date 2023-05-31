@@ -1,9 +1,9 @@
 /// <reference types="@types/node" />
 
 import type http from 'node:http';
-import type { TBunServeOptions } from '../../elysia-bun-types';
+import type { TBunServeOptions } from '../../elysia-bun-types.js';
 
-import { toHeaders, toReadableStream } from './utils';
+import { toHeaders, toReadableStream } from './utils.js';
 
 export async function request<T>(
   req: http.IncomingMessage,

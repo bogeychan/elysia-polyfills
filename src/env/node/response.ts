@@ -4,7 +4,9 @@ import type http from 'node:http';
 
 export async function response(
   response: Response,
-  httpResponse: http.ServerResponse
+  httpResponse: http.ServerResponse<http.IncomingMessage> & {
+    req: http.IncomingMessage;
+  }
 ) {
   httpResponse.statusCode = response.status;
   httpResponse.statusMessage = response.statusText;
@@ -22,3 +24,4 @@ export async function response(
     })
   );
 }
+

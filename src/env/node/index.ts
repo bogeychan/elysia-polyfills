@@ -1,4 +1,5 @@
 /// <reference types="@types/node" />
 
-import './server';
-import '../headers';
+import './server.js';
+import '../headers.js';
+

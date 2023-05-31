@@ -6,14 +6,14 @@ import type {
   TBunServer,
   TElysiaBun,
   TElysiaServer
-} from '../../elysia-bun-types';
+} from '../../elysia-bun-types.js';
 
 import fs from 'node:fs';
 import http from 'node:http';
 import { Blob } from 'node:buffer';
-import { request } from './request';
-import { response } from './response';
-import { ensureDefaults } from '../../config';
+import { request } from './request.js';
+import { response } from './response.js';
+import { ensureDefaults } from '../../config.js';
 
 const ElysiaBun: TElysiaBun = {
   serve<T>(options: TBunServeOptions<T>) {
@@ -45,6 +45,7 @@ const ElysiaBun: TElysiaBun = {
           await server.fetch(
             await request(req as http.IncomingMessage, options)
           ),
+          // @ts-ignore
           res
         );
       } finally {
@@ -89,3 +90,4 @@ const ElysiaBun: TElysiaBun = {
 
 // @ts-ignore
 globalThis.Bun = ElysiaBun;
+

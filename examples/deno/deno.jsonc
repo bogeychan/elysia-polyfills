@@ -5,8 +5,8 @@
     "test": "rm -fr ./tests && cp -r ../../tests ./tests && deno run --allow-read --node-modules-dir ./test.ts"
   },
   "imports": {
-    "@bogeychan/elysia-polyfills/deno/index.js": "../../dist/env/deno/index.js",
-    "elysia": "npm:elysia@0.5.9",
+    "@bogeychan/elysia-polyfills/deno/index.js": "../../dist/mjs/env/deno/index.js",
+    "elysia": "npm:elysia@0.5.10",
     // --- test dependencies
     "@sinclair/typebox": "npm:@sinclair/typebox@0.28.10",
     "@elysiajs/cors": "npm:@elysiajs/cors@0.5.0",

@@ -1,4 +1,4 @@
-import { TBunServeOptions } from './elysia-bun-types';
+import { TBunServeOptions } from './elysia-bun-types.js';
 
 export function ensureDefaults<T>(options: TBunServeOptions<T>) {
   if (typeof options.port === 'undefined') {
@@ -19,3 +19,4 @@ export function ensureDefaults<T>(options: TBunServeOptions<T>) {
 
   return options as Required<TBunServeOptions<T> & { port: number }>;
 }
+

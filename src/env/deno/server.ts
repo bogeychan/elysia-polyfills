@@ -6,9 +6,9 @@ import type {
   TElysiaBun,
   TBunFileBlob,
   TElysiaServer
-} from '../../elysia-bun-types';
+} from '../../elysia-bun-types.js';
 
-import { ensureDefaults } from '../../config';
+import { ensureDefaults } from '../../config.js';
 
 const ElysiaBun: TElysiaBun = {
   serve<T>(options: TBunServeOptions<T>) {

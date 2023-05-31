@@ -1,4 +1,4 @@
-import type { TBunHeaders } from '../elysia-bun-types';
+import type { TBunHeaders } from '../elysia-bun-types.js';
 
 class BunHeaders extends Headers implements TBunHeaders {
   override toJSON() {

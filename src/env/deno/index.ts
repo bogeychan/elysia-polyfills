@@ -1,2 +1,3 @@
-import './server';
-import '../headers';
+import './server.js';
+import '../headers.js';
+

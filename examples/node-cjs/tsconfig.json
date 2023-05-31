@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "target": "ES2016",
+        "skipLibCheck": true,
+        "moduleResolution": "node",
+        "outDir": "./tests/out"
+    }
+}

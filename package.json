@@ -16,28 +16,26 @@
     "elysia-polyfills": "./bin/cli.js"
   },
   "scripts": {
-    "build": "rm -fr dist && tsc && node ./scripts/build.js"
+    "build": "rm -fr dist && tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && bash fixup"
   },
   "exports": {
     "./node/index.js": {
-      "import": "./dist/env/node/index.js",
-      "default": "./dist/env/node/index.js",
-      "node": "./dist/env/node/index.js"
+      "require": "./dist/cjs/env/node/index.js",
+      "import": "./dist/mjs/env/node/index.js"
     },
     "./deno/index.js": {
-      "import": "./dist/env/node/index.js",
-      "default": "./dist/env/node/index.js",
-      "node": "./dist/env/node/index.js"
+      "require": "./dist/cjs/env/deno/index.js",
+      "import": "./dist/mjs/env/deno/index.js"
     }
   },
   "peerDependencies": {
-    "elysia": ">= 0.4.9"
+    "elysia": ">= 0.5.10"
   },
   "devDependencies": {
     "@types/chai": "^4.3.4",
-    "@types/node": "^18.15.13",
+    "@types/node": "^18.15.3",
     "bun-types": "^0.6.4",
-    "elysia": "^0.4.9",
+    "elysia": "^0.5.10",
     "typescript": "^5.0.4"
   },
   "dependencies": {
