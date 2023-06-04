@@ -1,3 +1,9 @@
+# 0.5.2 - 04 Jun 2023
+
+Improvement:
+
+- with version [0.5.15](https://github.com/elysiajs/elysia/issues/50), `Elysia.js` supports `CommonJS`. Therefore, a build step is no longer required.
+
 # 0.5.1 - 01 Jun 2023
 
 Feature:
