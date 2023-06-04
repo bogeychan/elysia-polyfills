@@ -169,10 +169,10 @@ eastasianwidth@^0.2.0:
   resolved "https://registry.yarnpkg.com/eastasianwidth/-/eastasianwidth-0.2.0.tgz#696ce2ec0aa0e6ea93a397ffcf24aa7840c827cb"
   integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
-elysia@^0.5.10:
-  version "0.5.11"
-  resolved "https://registry.yarnpkg.com/elysia/-/elysia-0.5.11.tgz#f58e2e3d270d1276c382cd433dc8d6f58a4bd8c9"
-  integrity sha512-+fo14SdpodFNqKNJkbKVmVCKDRnsRVfl711jZu7u2jtelV4xmENWbl3yaEOxrtFl4csKGPs2dOAPDaxxhImzPw==
+elysia@^0.5.15:
+  version "0.5.15"
+  resolved "https://registry.yarnpkg.com/elysia/-/elysia-0.5.15.tgz#3410e983d40d2f528b2c168809232f2b9cddb8b2"
+  integrity sha512-T9PCiYjT7dZX7bkoEcBqYZtLf2IYbijsz+jWVdCGErt1OBsTgvgfdre5sIYyHUNlsumAUSQUV5AJDochvCjGAw==
   dependencies:
     "@sinclair/typebox" "^0.28.10"
     "@types/lodash.clonedeep" "^4.5.7"
@@ -405,6 +405,7 @@ signal-exit@^4.0.1:
   integrity sha512-MY2/qGx4enyjprQnFaZsHib3Yadh3IXyV2C321GY0pjGfVBu4un0uDJkwgdxqO+Rdx8JMT8IfJIRwbYVz3Ob3Q==
 
 "string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -423,6 +424,7 @@ string-width@^5.0.1, string-width@^5.1.2:
     strip-ansi "^7.0.1"
 
 "strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+  name strip-ansi-cjs
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==

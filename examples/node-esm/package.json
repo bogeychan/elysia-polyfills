@@ -3,17 +3,16 @@
   "type": "module",
   "scripts": {
     "start": "ts-node --esm ./main.ts",
-    "transpile": "elysia-polyfills @elysiajs/cors @elysiajs/html @elysiajs/bearer @elysiajs/cookie @elysiajs/swagger @elysiajs/static",
     "test": "rm -fr ./tests && cp -r ../../tests ./tests && npm run lt",
     "lt": "ts-node --esm ./test.ts"
   },
   "devDependencies": {
-    "@elysiajs/bearer": "^0.5.0",
-    "@elysiajs/cookie": "^0.5.0",
-    "@elysiajs/cors": "^0.5.0",
-    "@elysiajs/html": "^0.5.0",
-    "@elysiajs/static": "^0.5.1",
-    "@elysiajs/swagger": "^0.5.0",
+    "@elysiajs/bearer": "^0.5.1",
+    "@elysiajs/cookie": "^0.5.1",
+    "@elysiajs/cors": "^0.5.1",
+    "@elysiajs/html": "^0.5.1",
+    "@elysiajs/static": "^0.5.2",
+    "@elysiajs/swagger": "^0.5.1",
     "@types/chai": "^4.3.4",
     "@types/node": "^18.15.13",
     "chai": "^4.3.7",
@@ -22,6 +21,6 @@
   },
   "dependencies": {
     "@bogeychan/elysia-polyfills": "../..",
-    "elysia": "^0.5.10"
+    "elysia": "^0.5.15"
   }
 }

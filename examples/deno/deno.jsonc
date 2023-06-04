@@ -1,19 +1,19 @@
 {
   "tasks": {
-    "dev": "deno run --node-modules-dir --allow-net --allow-env --watch main.ts",
-    "start": "deno run --node-modules-dir --allow-net --allow-env main.ts",
-    "test": "rm -fr ./tests && cp -r ../../tests ./tests && deno run --allow-read --node-modules-dir ./test.ts"
+    "dev": "deno run --allow-net --allow-env --watch main.ts",
+    "start": "deno run --allow-net --allow-env main.ts",
+    "test": "rm -fr ./tests && cp -r ../../tests ./tests && deno run --allow-read ./test.ts"
   },
   "imports": {
     "@bogeychan/elysia-polyfills/deno/index.js": "../../dist/mjs/env/deno/index.js",
-    "elysia": "npm:elysia@0.5.10",
-    // --- test dependencies
+    "elysia": "npm:elysia@0.5.15",
     "@sinclair/typebox": "npm:@sinclair/typebox@0.28.10",
-    "@elysiajs/cors": "npm:@elysiajs/cors@0.5.0",
-    "@elysiajs/html": "npm:@elysiajs/html@0.5.0",
-    "@elysiajs/bearer": "npm:@elysiajs/bearer@0.5.0",
-    "@elysiajs/cookie": "npm:@elysiajs/cookie@0.5.0",
-    "@elysiajs/static": "npm:@elysiajs/static@0.5.1",
+    // --- test dependencies
+    "@elysiajs/cors": "npm:@elysiajs/cors@0.5.1",
+    "@elysiajs/html": "npm:@elysiajs/html@0.5.1",
+    "@elysiajs/bearer": "npm:@elysiajs/bearer@0.5.1",
+    "@elysiajs/cookie": "npm:@elysiajs/cookie@0.5.1",
+    "@elysiajs/static": "npm:@elysiajs/static@0.5.2",
     "chai": "npm:chai"
     // --- test dependencies
   }
