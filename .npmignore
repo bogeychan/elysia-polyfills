@@ -1,9 +1,10 @@
 .git
 .gitignore
 .env
-sandbox/
 
-node_modules
+keys/
+sandbox/
+node_modules/
 
 examples
 tests

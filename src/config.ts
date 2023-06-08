@@ -1,4 +1,10 @@
-import { TBunServeOptions } from './elysia-bun-types.js';
+import { TBunServeOptions, TBunTLSServeOptions } from './elysia-bun-types.js';
+
+type ValidOptions<T> = Required<TBunServeOptions<T>> & {
+  port: number;
+  key?: string;
+  cert?: string;
+};
 
 export function ensureDefaults<T>(options: TBunServeOptions<T>) {
   if (typeof options.port === 'undefined') {
@@ -17,6 +23,15 @@ export function ensureDefaults<T>(options: TBunServeOptions<T>) {
     options.hostname = '0.0.0.0';
   }
 
-  return options as Required<TBunServeOptions<T> & { port: number }>;
+  const { key, cert } = options as TBunTLSServeOptions;
+  if (typeof key !== 'undefined' && typeof cert !== 'undefined') {
+    if (typeof key !== 'string' || typeof cert !== 'string') {
+      throw new Error(
+        `Key and Cert are only supported in "string" (i.e. PEM) format`
+      );
+    }
+  }
+
+  return options as ValidOptions<T>;
 }
 

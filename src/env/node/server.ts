@@ -10,6 +10,7 @@ import type {
 
 import fs from 'node:fs';
 import http from 'node:http';
+import https from 'node:https';
 import { Blob } from 'node:buffer';
 import { request } from './request.js';
 import { response } from './response.js';
@@ -17,7 +18,7 @@ import { ensureDefaults } from '../../config.js';
 
 const ElysiaBun: TElysiaBun = {
   serve<T>(options: TBunServeOptions<T>) {
-    const { hostname, port } = ensureDefaults(options);
+    const { hostname, port, key, cert } = ensureDefaults(options);
 
     let isRunning = false;
     let shutdown: { closeAll?: boolean };
@@ -28,18 +29,19 @@ const ElysiaBun: TElysiaBun = {
       pendingRequests: 0,
       pendingWebSockets: 0,
       development: options.development ?? process.env.NODE_ENV !== 'production',
-      fetch(request) {
-        const bunServer = server as TBunServer;
-        return options.fetch.call(
-          bunServer,
-          request as Request,
-          bunServer
-        ) as ReturnType<TElysiaServer['fetch']>;
-      },
+      fetch: (request: Request) =>
+        options.fetch.call(
+          server as TBunServer,
+          request,
+          server as TBunServer
+        ) as ReturnType<TElysiaServer['fetch']>,
       stop() {} // lazy
     };
 
-    const httpServer = http.createServer(async (req, res) => {
+    const handler: http.RequestListener<
+      typeof http.IncomingMessage,
+      typeof http.ServerResponse
+    > = async (req, res) => {
       try {
         await response(
           await server.fetch(
@@ -51,7 +53,12 @@ const ElysiaBun: TElysiaBun = {
       } finally {
         res.end();
       }
-    });
+    };
+
+    const httpServer =
+      key && cert
+        ? https.createServer({ key, cert }, handler)
+        : http.createServer(handler);
 
     server.stop = (closeActiveConnections) => {
       if (!isRunning) {

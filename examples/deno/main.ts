@@ -13,6 +13,9 @@ import { cookie } from '@elysiajs/cookie';
 // import 'npm:@sinclair/typebox@0.26.0';
 // import { Elysia } from 'npm:elysia@0.4.9';
 
+const key = Deno.readTextFileSync('../../keys/localhost-key.pem');
+const cert = Deno.readTextFileSync('../../keys/localhost.pem');
+
 const app = new Elysia()
   .use(cookie())
   .get('/', () => ({ hello: 'Deno👋' }))
@@ -23,7 +26,7 @@ const app = new Elysia()
 
     return { my: 'json' };
   })
-  .listen(8080);
+  .listen({ key, cert, port: 8443 });
 
-console.log(`Listening on http://localhost:${app.server!.port}`);
+console.log(`Listening on https://localhost:${app.server!.port}`);
 

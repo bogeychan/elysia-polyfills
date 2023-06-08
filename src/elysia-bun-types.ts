@@ -11,6 +11,7 @@ type TElysiaServer = Omit<Server, 'publish' | 'reload' | 'upgrade'>;
 type TBunHeaders = Headers;
 
 type TBunServer = Server;
+type TBunTLSServeOptions = TLSServeOptions;
 type TBunServeOptions<T> =
   | ServeOptions
   | TLSServeOptions
@@ -26,6 +27,7 @@ export type {
   TBunFileBlob,
   TBunServeOptions,
   TBunRequest,
-  TBunHeaders
+  TBunHeaders,
+  TBunTLSServeOptions
 };
 

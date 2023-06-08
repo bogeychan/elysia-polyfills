@@ -2,6 +2,7 @@
 .env
 NOTES.txt
 
+keys/
 dist/
 node_modules/
 sandbox/

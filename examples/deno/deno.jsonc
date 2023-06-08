@@ -1,7 +1,7 @@
 {
   "tasks": {
-    "dev": "deno run --allow-net --allow-env --watch main.ts",
-    "start": "deno run --allow-net --allow-env main.ts",
+    "dev": "deno run --allow-read --allow-net --allow-env --watch main.ts",
+    "start": "deno run --allow-read --allow-net --allow-env main.ts",
     "test": "rm -fr ./tests && cp -r ../../tests ./tests && deno run --allow-read ./test.ts"
   },
   "imports": {
