@@ -15,6 +15,7 @@ import { Blob } from 'node:buffer';
 import { request } from './request.js';
 import { response } from './response.js';
 import { ensureDefaults } from '../../config.js';
+import { handleError } from '../error.js';
 
 const ElysiaBun: TElysiaBun = {
   serve<T>(options: TBunServeOptions<T>) {
@@ -43,13 +44,17 @@ const ElysiaBun: TElysiaBun = {
       typeof http.ServerResponse
     > = async (req, res) => {
       try {
-        await response(
-          await server.fetch(
-            await request(req as http.IncomingMessage, options)
-          ),
-          // @ts-ignore
-          res
-        );
+        const my_request = await request(req as http.IncomingMessage, options);
+
+        let my_response: Response;
+
+        try {
+          my_response = await server.fetch(my_request);
+        } catch (error) {
+          my_response = await handleError(options, server, error);
+        }
+
+        await response(my_response, res);
       } finally {
         res.end();
       }

@@ -7,6 +7,9 @@ const app = new Elysia()
   .use(cookie())
   .get('/', () => ({ hello: 'Node.js👋' }))
   .post('/:world', (ctx) => `Hello ${ctx.params.world}`)
+  .get('/teapot', () => {
+    throw { message: "I'm a teapot", status: 418 };
+  })
   .get('/api', ({ setCookie }) => {
     setCookie('a', 'b');
     setCookie('c', 'd');

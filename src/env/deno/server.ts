@@ -11,6 +11,7 @@ import type {
 import { ensureDefaults } from '../../config.js';
 
 import { Server } from './std/server.js';
+import { handleError } from '../error.js';
 
 const ElysiaBun: TElysiaBun = {
   serve<T>(options: TBunServeOptions<T>) {
@@ -23,7 +24,8 @@ const ElysiaBun: TElysiaBun = {
     const denoServer = new Server({
       hostname,
       port,
-      handler: (request) => server.fetch(request)
+      handler: (request) => server.fetch(request),
+      onError: (error) => handleError(options, server, error)
     });
 
     const server: TElysiaServer = {
