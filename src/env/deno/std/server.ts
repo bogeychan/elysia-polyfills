@@ -222,10 +222,10 @@ export class Server {
    * await server.listenAndServeTls(certFile, keyFile);
    * ```
    *
-   * @param certFile The path to the file containing the TLS certificate.
-   * @param keyFile The path to the file containing the TLS private key.
+   * @param cert The path to the file containing the TLS certificate.
+   * @param key The path to the file containing the TLS private key.
    */
-  async listenAndServeTls(certFile: string, keyFile: string) {
+  async listenAndServeTls(cert: string, key: string) {
     if (this.#closed) {
       throw new Deno.errors.Http(ERROR_SERVER_CLOSED);
     }
@@ -233,8 +233,8 @@ export class Server {
     const listener = Deno.listenTls({
       port: this.#port ?? HTTPS_PORT,
       hostname: this.#host ?? '0.0.0.0',
-      certFile,
-      keyFile,
+      cert,
+      key,
       transport: 'tcp'
       // ALPN protocol support not yet stable.
       // alpnProtocols: ["h2", "http/1.1"],
