@@ -1,3 +1,13 @@
+# 0.5.3 - 08 Jun 2023
+
+Feature:
+
+- `https` support for `Node.js` and `Deno`
+
+Bug fix:
+
+- handle outer errors
+
 # 0.5.2 - 04 Jun 2023
 
 Improvement:
