@@ -1,6 +1,6 @@
 {
   "name": "@bogeychan/elysia-polyfills",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "description": "Collection of experimental Elysia.js polyfills",
   "author": {
     "name": "bogeychan",
@@ -16,7 +16,8 @@
     "elysia-polyfills": "./bin/cli.js"
   },
   "scripts": {
-    "build": "rm -fr dist && tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && bash fixup"
+    "build": "rm -fr dist && tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && bash fixup",
+    "release": "npm run build && npm run test && npm publish --access public"
   },
   "types": "./dist/modules.d.ts",
   "exports": {

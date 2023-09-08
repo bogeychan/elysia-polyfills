@@ -1,3 +1,13 @@
+# 0.6.0 - 08 Sep 2023
+
+Feature:
+
+- update to elysia 0.6.19
+
+Bug fix:
+
+- missing implementation of `server.reload` [#2](https://github.com/bogeychan/elysia-polyfills/issues/2)
+
 # 0.5.3 - 08 Jun 2023
 
 Feature:
