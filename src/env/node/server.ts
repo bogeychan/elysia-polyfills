@@ -38,7 +38,12 @@ const ElysiaBun: TElysiaBun = {
           request,
           server as TBunServer
         ) as ReturnType<TElysiaServer['fetch']>,
-      stop() {} // lazy
+      stop() {}, // lazy
+      reload(newOptions) {
+        if (newOptions.fetch) {
+          options.fetch = newOptions.fetch;
+        }
+      }
     };
 
     const handler: http.RequestListener<

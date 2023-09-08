@@ -48,6 +48,11 @@ const ElysiaBun: TElysiaBun = {
         } catch {
           // Server has already been closed.
         }
+      },
+      reload(newOptions) {
+        if (newOptions.fetch) {
+          options.fetch = newOptions.fetch;
+        }
       }
     };
 

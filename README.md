@@ -2,7 +2,7 @@
 
 Collection of experimental [Elysia.js](https://elysiajs.com) polyfills:
 
-| Package                                                                      | [Node.js](https://nodejs.org) (v18.16.0)      | [Deno](https://deno.land) (1.33.4<sup>#1</sup>) |
+| Package                                                                      | [Node.js](https://nodejs.org) (v18.16.0)      | [Deno](https://deno.land) (1.36.4<sup>#1</sup>) |
 | ---------------------------------------------------------------------------- | --------------------------------------------- | ----------------------------------------------- |
 | [elysia](https://npmjs.com/package/elysia) (0.6.19<sup>#2</sup>)             | 🔬                                            | 🔬                                              |
 | [@elysiajs/cors](https://www.npmjs.com/package/@elysiajs/cors) (0.6.0)       | ✅                                            | ✅                                              |

@@ -7,7 +7,7 @@ import type {
 } from 'bun';
 
 type TElysiaBun = Pick<typeof import('bun'), 'serve' | 'gc' | 'file'>;
-type TElysiaServer = Omit<Server, 'publish' | 'reload' | 'upgrade'>;
+type TElysiaServer = Omit<Server, 'publish' | 'upgrade'>;
 type TBunHeaders = Headers;
 
 type TBunServer = Server;
