@@ -7,7 +7,6 @@
         "esModuleInterop": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
-        "moduleResolution": "nodenext",
         "removeComments": true,
         "declaration": true,
         "types": [

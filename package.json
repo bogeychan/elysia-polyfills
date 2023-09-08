@@ -30,14 +30,14 @@
     }
   },
   "peerDependencies": {
-    "elysia": ">= 0.5.15"
+    "elysia": ">= 0.6.19"
   },
   "devDependencies": {
     "@types/chai": "^4.3.4",
     "@types/node": "^18.15.3",
-    "bun-types": "^0.6.4",
-    "elysia": "^0.5.15",
-    "typescript": "^5.0.4"
+    "bun-types": "^1.0.1",
+    "elysia": "^0.6.19",
+    "typescript": "^5.2.2"
   },
   "dependencies": {
     "acorn": "^8.8.2",

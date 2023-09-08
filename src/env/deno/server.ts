@@ -14,6 +14,7 @@ import { Server } from './std/server.js';
 import { handleError } from '../error.js';
 
 const ElysiaBun: TElysiaBun = {
+  // @ts-ignore UnixServeOptions
   serve<T>(options: TBunServeOptions<T>) {
     const { hostname, port, key, cert } = ensureDefaults(options);
 
@@ -29,6 +30,7 @@ const ElysiaBun: TElysiaBun = {
     });
 
     const server: TElysiaServer = {
+      id: '',
       port,
       hostname,
       development: options.development,

@@ -8,6 +8,7 @@ import '@elysiajs/cors';
 import '@elysiajs/bearer';
 import '@elysiajs/static';
 import { cookie } from '@elysiajs/cookie';
+import { swagger } from '@elysiajs/swagger';
 
 // import 'npm:@bogeychan/elysia-polyfills/deno/index.js';
 // import 'npm:@sinclair/typebox@0.26.0';
@@ -18,6 +19,7 @@ const cert = Deno.readTextFileSync('../../keys/localhost.pem');
 
 const app = new Elysia()
   .use(cookie())
+  .use(swagger())
   .get('/', () => ({ hello: 'Deno👋' }))
   .post('/:world', (ctx) => `Hello ${ctx.params.world}`)
   .get('/teapot', () => {

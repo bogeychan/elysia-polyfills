@@ -35,11 +35,13 @@ use(
   </html>`;
 
     it('default', async () => {
-      const app = new Elysia().use(html()).get('/', ({ html }) => html(page));
+      const app = new Elysia()
+        .use(html())
+        .get('/', ({ html }: any) => html(page));
 
       const res = await app.handle(req());
       assert.equal(await res.text(), page);
-      assert.equal(res.headers.get('Content-Type'), 'text/html');
+      assert.isTrue(res.headers.get('Content-Type')?.includes('text/html'));
     });
   }
 );
@@ -50,8 +52,8 @@ use(
   ({ bearer }) => {
     const app = new Elysia()
       .use(bearer())
-      .get('/sign', ({ bearer }) => bearer, {
-        beforeHandle({ bearer, set }) {
+      .get('/sign', ({ bearer }: any) => bearer, {
+        beforeHandle({ bearer, set }: any) {
           if (!bearer) {
             set.status = 400;
             set.headers[
@@ -94,7 +96,7 @@ use(
     it('set cookie', async () => {
       const app = new Elysia()
         .use(cookie())
-        .get('/', ({ cookie: { user }, setCookie }) => {
+        .get('/', ({ cookie: { user }, setCookie }: any) => {
           setCookie('user', 'elysia');
 
           return user;
@@ -105,11 +107,13 @@ use(
     });
 
     it('remove cookie', async () => {
-      const app = new Elysia().use(cookie()).get('/', ({ removeCookie }) => {
-        removeCookie('user');
+      const app = new Elysia()
+        .use(cookie())
+        .get('/', ({ removeCookie }: any) => {
+          removeCookie('user');
 
-        return 'unset';
-      });
+          return 'unset';
+        });
 
       const res = await app.handle(
         new Request('http://localhost/', {
@@ -132,7 +136,7 @@ use(
             secret: 'Bun'
           })
         )
-        .get('/', ({ setCookie }) => {
+        .get('/', ({ setCookie }: any) => {
           setCookie('name', 'elysia', {
             signed: true
           });
@@ -151,14 +155,14 @@ use(
             secret: 'Bun'
           })
         )
-        .get('/', ({ setCookie }) => {
+        .get('/', ({ setCookie }: any) => {
           setCookie('name', 'elysia', {
             signed: true
           });
 
           return 'unset';
         })
-        .get('/unsign', ({ cookie, unsignCookie }) => {
+        .get('/unsign', ({ cookie, unsignCookie }: any) => {
           const { value } = unsignCookie(cookie.name);
           return value;
         });
@@ -441,10 +445,10 @@ export async function runTests(env: 'node' | 'deno') {
   for (const moduleName in TEST_BLOCKS) {
     const block = TEST_BLOCKS[moduleName];
 
-    if (env === 'deno' && moduleName === '@elysiajs/swagger') {
-      console.log(`⏩ Skipping ${moduleName}`);
-      continue;
-    }
+    // if (env === 'deno' && moduleName === '@elysiajs/swagger') {
+    //   console.log(`⏩ Skipping ${moduleName}`);
+    //   continue;
+    // }
 
     console.log((currentModuleName = moduleName));
 

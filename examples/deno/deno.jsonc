@@ -6,14 +6,15 @@
   },
   "imports": {
     "@bogeychan/elysia-polyfills/deno/index.js": "../../dist/mjs/env/deno/index.js",
-    "elysia": "npm:elysia@0.5.15",
-    "@sinclair/typebox": "npm:@sinclair/typebox@0.28.10",
+    "elysia": "npm:elysia@0.6.19",
+    "@sinclair/typebox": "npm:@sinclair/typebox@0.30.4",
     // --- test dependencies
-    "@elysiajs/cors": "npm:@elysiajs/cors@0.5.1",
-    "@elysiajs/html": "npm:@elysiajs/html@0.5.1",
-    "@elysiajs/bearer": "npm:@elysiajs/bearer@0.5.1",
-    "@elysiajs/cookie": "npm:@elysiajs/cookie@0.5.1",
-    "@elysiajs/static": "npm:@elysiajs/static@0.5.2",
+    "@elysiajs/cors": "npm:@elysiajs/cors@0.6.0",
+    "@elysiajs/html": "npm:@elysiajs/html@0.6.4",
+    "@elysiajs/bearer": "npm:@elysiajs/bearer@0.6.0",
+    "@elysiajs/cookie": "npm:@elysiajs/cookie@0.6.1",
+    "@elysiajs/static": "npm:@elysiajs/static@0.6.0",
+    "@elysiajs/swagger": "npm:@elysiajs/swagger@0.6.1",
     "chai": "npm:chai"
     // --- test dependencies
   }

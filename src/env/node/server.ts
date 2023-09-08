@@ -18,6 +18,7 @@ import { ensureDefaults } from '../../config.js';
 import { handleError } from '../error.js';
 
 const ElysiaBun: TElysiaBun = {
+  // @ts-ignore UnixServeOptions
   serve<T>(options: TBunServeOptions<T>) {
     const { hostname, port, key, cert } = ensureDefaults(options);
 
@@ -25,6 +26,7 @@ const ElysiaBun: TElysiaBun = {
     let shutdown: { closeAll?: boolean };
 
     const server: TElysiaServer = {
+      id: '',
       port,
       hostname,
       pendingRequests: 0,
