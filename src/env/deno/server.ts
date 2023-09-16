@@ -10,7 +10,6 @@ import type {
 
 import { ensureDefaults } from '../../config.js';
 
-import { Server } from './std/server.js';
 import { handleError } from '../error.js';
 
 const ElysiaBun: TElysiaBun = {
@@ -22,12 +21,19 @@ const ElysiaBun: TElysiaBun = {
       options.development = Deno.env.get('NODE_ENV') !== 'production';
     }
 
-    const denoServer = new Server({
+    const serveOptions: Deno.ServeOptions = {
       hostname,
       port,
-      handler: (request) => server.fetch(request),
       onError: (error) => handleError(options, server, error)
-    });
+    };
+
+    if (key && cert) {
+      const serveTlsOptions = serveOptions as Deno.ServeTlsOptions;
+      serveTlsOptions.key = key;
+      serveTlsOptions.cert = cert;
+    }
+
+    let denoServer: Deno.Server;
 
     const server: TElysiaServer = {
       id: '',
@@ -56,11 +62,7 @@ const ElysiaBun: TElysiaBun = {
       }
     };
 
-    if (key && cert) {
-      void denoServer.listenAndServeTls(cert, key);
-    } else {
-      void denoServer.listenAndServe();
-    }
+    denoServer = Deno.serve(serveOptions, (request) => server.fetch(request));
 
     return server as TBunServer;
   },

@@ -1,62 +1,38 @@
 declare namespace Deno {
   interface Server {
-    [Symbol.asyncIterator](): AsyncGenerator<Conn>;
     close(): void;
-  }
-
-  interface Conn extends Closer {
-    localAddr: Addr;
-    remoteAddr: Addr;
-  }
-
-  interface NetAddr {
-    port: number;
-  }
-
-  interface Listener extends Closer {
-    accept(): Promise<Conn>;
-    addr: Addr;
   }
 
   interface Closer {
     close(): void;
   }
 
-  interface HttpConn extends Conn {
-    nextRequest(): Promise<RequestEvent>;
-    [Symbol.asyncIterator](): AsyncGenerator<RequestEvent>;
-  }
-
-  interface RequestEvent {
-    request: Request;
-    respondWith(response: Response): Promise<void>;
-  }
-
-  type ListenOptions = { port: number; hostname: string; transport: 'tcp' };
-
-  type ListenTlsOptions = ListenOptions & {
-    key: string;
-    cert: string;
-    alpnProtocols?: string[];
+  type ServeOptions = {
+    port?: number;
+    hostname?: string;
+    onError?: (error: unknown) => Response | Promise<Response>;
   };
 
-  interface Addr {}
-}
+  type ServeTlsOptions = ServeOptions & {
+    key: string;
+    cert: string;
+  };
 
-interface Http {
-  new (message: string): Error;
+  type ServeHandler = (request: Request) => Response | Promise<Response>;
 }
 
 const Deno: {
-  // https://deno.land/api@v1.33.4?s=Deno.listenTls
-  listenTls(options: Deno.ListenTlsOptions): Deno.Listener;
-  listen(options: Deno.ListenOptions): Deno.Listener;
-  serveHttp(connection: Deno.Conn): Deno.HttpConn;
   env: {
     get(name: string): string | undefined;
   };
   readFileSync(path: string | URL): Uint8Array; // https://deno.land/api@v1.33.1?s=Deno.readFileSync
   readTextFileSync(path: string): string;
+
+  // https://deno.land/api@v1.35.0?s=Deno.serve
+  serve(
+    options: Deno.ServeOptions | Deno.ServeTlsOptions,
+    handler: Deno.ServeHandler
+  ): Deno.Server;
 
   errors: {
     BadResource;

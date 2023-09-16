@@ -17,7 +17,7 @@ import { swagger } from '@elysiajs/swagger';
 const key = Deno.readTextFileSync('../../keys/localhost-key.pem');
 const cert = Deno.readTextFileSync('../../keys/localhost.pem');
 
-const app = new Elysia()
+new Elysia()
   .use(cookie())
   .use(swagger())
   .get('/', () => ({ hello: 'Deno👋' }))
@@ -32,6 +32,4 @@ const app = new Elysia()
     return { my: 'json' };
   })
   .listen({ key, cert, port: 8443 });
-
-console.log(`Listening on https://localhost:${app.server!.port}`);
 
