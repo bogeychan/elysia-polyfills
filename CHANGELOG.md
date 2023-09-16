@@ -1,3 +1,9 @@
+# 0.6.1 - 16 Sep 2023
+
+Improvement:
+
+- using `Deno.serve` instead of `std` module
+
 # 0.6.0 - 08 Sep 2023
 
 Feature:
