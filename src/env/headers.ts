@@ -1,7 +1,10 @@
 import type { TBunHeaders } from '../elysia-bun-types.js';
 
 // @ts-expect-error
-class BunHeaders extends Headers implements TBunHeaders {
+globalThis.Headers = class Headers
+  extends globalThis.Headers
+  implements TBunHeaders
+{
   toJSON() {
     const entries: Record<string, string> = {};
 
@@ -11,17 +14,24 @@ class BunHeaders extends Headers implements TBunHeaders {
 
     return entries;
   }
-}
+};
 
-class BunRequest extends Request {
+globalThis.Request = class Request extends globalThis.Request {
   // @ts-expect-error
   get headers() {
-    // @ts-expect-error
-    return new BunHeaders(super.headers);
+    return new globalThis.Headers(
+      // @ts-expect-error
+      super.headers
+    );
   }
-}
+};
 
-// @ts-ignore
-globalThis.Headers = BunHeaders;
-// @ts-ignore
-globalThis.Request = BunRequest;
+globalThis.Response = class Response extends globalThis.Response {
+  // @ts-expect-error
+  get headers() {
+    return new globalThis.Headers(
+      // @ts-expect-error
+      super.headers
+    );
+  }
+};

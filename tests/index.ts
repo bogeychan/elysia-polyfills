@@ -7,6 +7,15 @@ const TEST_BLOCKS: { [moduleName: string]: TestBlock } = {}; // ignore this :D
 
 const req = (path: string = '/') => new Request(`http://localhost${path}`);
 
+useCustom('elysia', () => {
+  it('return raw response', async () => {
+    const app = new Elysia().get('/', () => new Response('foo'));
+
+    const res = await app.handle(req());
+    assert.equal(await res.text(), 'foo');
+  });
+});
+
 use(
   '@elysiajs/cors',
   () => import('@elysiajs/cors'),
@@ -468,6 +477,16 @@ export async function runTests(env: 'node' | 'deno') {
       }
     }
   }
+}
+
+function useCustom(moduleName: string, callback: () => void | Promise<void>) {
+  TEST_BLOCKS[moduleName] = {
+    moduleName,
+    callback: async () => {
+      await callback();
+    },
+    tests: []
+  };
 }
 
 function use(
