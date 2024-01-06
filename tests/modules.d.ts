@@ -1,23 +1,25 @@
+type Elysia = import('elysia').Elysia;
+
 declare module '@elysiajs/cors' {
-  function cors(): any;
+  function cors(): Elysia;
 }
 
 declare module '@elysiajs/html' {
-  function html(): any;
+  function html(): Elysia;
 }
 
 declare module '@elysiajs/bearer' {
-  function bearer(...args: any[]): any;
+  function bearer(...args: any[]): Elysia;
 }
 
 declare module '@elysiajs/cookie' {
-  function cookie(...agrs: any[]): any;
+  function cookie(...agrs: any[]): Elysia;
 }
 
 declare module '@elysiajs/swagger' {
-  function swagger(...args: any[]): any;
+  function swagger(...args: any[]): Elysia;
 }
 
 declare module '@elysiajs/static' {
-  function staticPlugin(...args: any[]): any;
+  function staticPlugin(...args: any[]): Elysia;
 }

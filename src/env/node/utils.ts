@@ -18,7 +18,7 @@ export function toReadableStream(req: http.IncomingMessage) {
   });
 }
 
-export function toHeaders(httpHeaders: http.IncomingHttpHeaders) {
+export function toHeaders(httpHeaders: http.IncomingHttpHeaders): Headers {
   const headers = new Headers();
 
   for (const name in httpHeaders) {
@@ -32,5 +32,7 @@ export function toHeaders(httpHeaders: http.IncomingHttpHeaders) {
     }
   }
 
+  // @ts-expect-error
   return headers;
 }
+

@@ -35,6 +35,7 @@ const ElysiaBun: TElysiaBun = {
 
     let denoServer: Deno.Server;
 
+    // @ts-expect-error
     const server: TElysiaServer = {
       id: '',
       port,
@@ -59,7 +60,8 @@ const ElysiaBun: TElysiaBun = {
         if (newOptions.fetch) {
           options.fetch = newOptions.fetch;
         }
-      }
+      },
+      url: new URL(`${key && cert ? 'https' : 'http'}://${hostname}:${port}`)
     };
 
     denoServer = Deno.serve(serveOptions, (request) => server.fetch(request));

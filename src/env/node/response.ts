@@ -12,7 +12,7 @@ export async function response(
   httpResponse.statusMessage = response.statusText;
 
   for (const [name, value] of response.headers) {
-    httpResponse.setHeader(name, value);
+    httpResponse.appendHeader(name, value);
   }
 
   await response.body?.pipeTo(

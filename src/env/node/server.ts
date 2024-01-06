@@ -25,6 +25,7 @@ const ElysiaBun: TElysiaBun = {
     let isRunning = false;
     let shutdown: { closeAll?: boolean };
 
+    // @ts-expect-error
     const server: TElysiaServer = {
       id: '',
       port,
@@ -43,7 +44,8 @@ const ElysiaBun: TElysiaBun = {
         if (newOptions.fetch) {
           options.fetch = newOptions.fetch;
         }
-      }
+      },
+      url: new URL(`${key && cert ? 'https' : 'http'}://${hostname}:${port}`)
     };
 
     const handler: http.RequestListener<

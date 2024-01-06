@@ -1,7 +1,8 @@
 import type { TBunHeaders } from '../elysia-bun-types.js';
 
+// @ts-expect-error
 class BunHeaders extends Headers implements TBunHeaders {
-  override toJSON() {
+  toJSON() {
     const entries: Record<string, string> = {};
 
     for (const [name, value] of this.entries()) {
@@ -13,8 +14,9 @@ class BunHeaders extends Headers implements TBunHeaders {
 }
 
 class BunRequest extends Request {
-  // @ts-ignore
+  // @ts-expect-error
   get headers() {
+    // @ts-expect-error
     return new BunHeaders(super.headers);
   }
 }
