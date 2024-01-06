@@ -1,3 +1,9 @@
+# 0.6.3 - 07 Jan 2024
+
+Bug fix:
+
+- returning raw response from handler [#4](https://github.com/bogeychan/elysia-polyfills/issues/4)
+
 # 0.6.2 - 06 Jan 2024
 
 Improvement:
