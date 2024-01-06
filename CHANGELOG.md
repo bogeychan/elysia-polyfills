@@ -1,3 +1,13 @@
+# 0.6.2 - 06 Jan 2024
+
+Improvement:
+
+- use `tsx` instead of `ts-node`
+
+Bug fix:
+
+- setting multiple headers with `Node.js`
+
 # 0.6.1 - 16 Sep 2023
 
 Improvement:
