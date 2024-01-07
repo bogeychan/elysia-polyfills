@@ -27,6 +27,10 @@ globalThis.Request = class Request extends globalThis.Request {
 };
 
 globalThis.Response = class Response extends globalThis.Response {
+  constructor(body?: Bun.BodyInit | null, init?: Bun.ResponseInit) {
+    super(init?.status === 204 ? null : body, init);
+  }
+
   // @ts-expect-error
   get headers() {
     return new globalThis.Headers(

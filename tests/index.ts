@@ -7,12 +7,21 @@ const TEST_BLOCKS: { [moduleName: string]: TestBlock } = {}; // ignore this :D
 
 const req = (path: string = '/') => new Request(`http://localhost${path}`);
 
-useCustom('elysia', () => {
+desc('elysia', () => {
   it('return raw response', async () => {
     const app = new Elysia().get('/', () => new Response('foo'));
 
     const res = await app.handle(req());
     assert.equal(await res.text(), 'foo');
+  });
+
+  it('behave like bun with status code 204 responses', async () => {
+    try {
+      const res = new Response('', { status: 204 });
+      assert.equal(res.status, 204);
+    } catch (err) {
+      assert.isTrue(false, err);
+    }
   });
 });
 
@@ -479,7 +488,7 @@ export async function runTests(env: 'node' | 'deno') {
   }
 }
 
-function useCustom(moduleName: string, callback: () => void | Promise<void>) {
+function desc(moduleName: string, callback: () => void | Promise<void>) {
   TEST_BLOCKS[moduleName] = {
     moduleName,
     callback: async () => {
