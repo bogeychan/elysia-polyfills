@@ -1,3 +1,9 @@
+# 0.6.4 - 12 Jan 2024
+
+Bug fix:
+
+- status code 204 responses #3 [#3](https://github.com/bogeychan/elysia-polyfills/issues/3)
+
 # 0.6.3 - 07 Jan 2024
 
 Bug fix:
