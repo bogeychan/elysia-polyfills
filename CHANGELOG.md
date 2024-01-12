@@ -2,7 +2,7 @@
 
 Bug fix:
 
-- status code 204 responses #3 [#3](https://github.com/bogeychan/elysia-polyfills/issues/3)
+- status code 204 responses [#3](https://github.com/bogeychan/elysia-polyfills/issues/3)
 
 # 0.6.3 - 07 Jan 2024
 
